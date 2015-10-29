@@ -1,7 +1,12 @@
 package ru.touchin.vkchat.models;
 
-/**
- * Created by Илья on 29.10.2015.
- */
+import com.google.api.client.util.Key;
+
+import java.util.List;
+
 public class Dialogs {
+
+    @Key("items")
+    private List<DialogItem> mDialogItems;
+
 }

@@ -13,7 +13,7 @@ android {
 
         buildConfigField "int", "API_TIME_OUT", "20"
         buildConfigField "String", "API_VERSION", '"1"'
-        buildConfigField "String", "VK_APP_ID", '"5.37"'
+        buildConfigField "String", "VK_APP_ID", '"5125948"'
     }
     buildTypes {
         release {
@@ -24,6 +24,18 @@ android {
             debuggable true
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+    }
 }
 
 dependencies {
@@ -31,7 +43,6 @@ dependencies {
     compile project(':base-library:base-library')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.octo.android.robospice:robospice:1.4.14'
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile('com.google.http-client:google-http-client-android:1.20.0') {
         exclude(group: 'org.apache.httpcomponents', module: 'httpclient')
@@ -40,7 +51,9 @@ dependencies {
         exclude(group: 'org.apache.httpcomponents', module: 'httpclient')
     }
     compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'com.facebook.fresco:fresco:0.8.0'
     compile 'com.facebook.fresco:imagepipeline-okhttp:0.8.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+
+    compile 'org.apache.commons:commons-lang3:3.3.2'
+//    compile 'commons-io:commons-io:2.4'
 }

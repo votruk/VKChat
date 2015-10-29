@@ -36,10 +36,10 @@ public class DialogsAdapter extends BaseAdapter<DialogItem> {
     @Override
     public void fillItem(View view, DialogItem dialogItem) {
         RoundedCornersImageView profileImage = (RoundedCornersImageView) view.findViewById(R.id.profile_image_normal);
-        Uri uri = Uri.parse(dialogItem.getUser().getNormalSizeImageURL());
-        profileImage.setImageURI(uri);
+//        Uri uri = Uri.parse(dialogItem.getUser().getNormalSizeImageURL());
+//        profileImage.setImageURI(uri);
 
-        ((TextView) view.findViewById(R.id.user_name_item)).setText(dialogItem.getUser().getName());
-        ((TextView) view.findViewById(R.id.tweet_item)).setText(dialogItem.toString());
+//        ((TextView) view.findViewById(R.id.user_name_item)).setText(dialogItem.getUser().getName());
+//        ((TextView) view.findViewById(R.id.tweet_item)).setText(dialogItem.toString());
     }
 }

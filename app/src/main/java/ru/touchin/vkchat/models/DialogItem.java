@@ -3,7 +3,7 @@ package ru.touchin.vkchat.models;
 import com.google.api.client.util.Key;
 
 public class DialogItem {
-    @Key("id")
+    @Key("mid")
     private Integer mId;
 
     @Key("date")
@@ -12,7 +12,7 @@ public class DialogItem {
     @Key("out")
     private Integer isLastOut;
 
-    @Key("user_id")
+    @Key("uid")
     private Integer mUserId;
 
     @Key("read_state")
@@ -23,6 +23,9 @@ public class DialogItem {
 
     @Key("body")
     private String mBody;
+
+    @Key("chat_id")
+    private Integer mChatId;
 
 
     public Integer getId() {
@@ -51,5 +54,9 @@ public class DialogItem {
 
     public String getBody() {
         return mBody;
+    }
+
+    public Integer getChatId() {
+        return mChatId;
     }
 }

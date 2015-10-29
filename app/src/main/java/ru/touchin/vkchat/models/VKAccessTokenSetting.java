@@ -1,7 +1,17 @@
 package ru.touchin.vkchat.models;
 
-/**
- * Created by Илья on 29.10.2015.
- */
-public class VKAccessTokenSetting {
+import com.google.api.client.json.Json;
+import com.google.api.client.util.Key;
+
+import org.zuzuk.utils.serialization.json.ObjectFromJson;
+
+public class VKAccessTokenSetting extends ObjectFromJson {
+
+    @Key("access_key")
+    private String mAccessKey;
+
+    public String getAccessKey() {
+        return mAccessKey;
+    }
+
 }

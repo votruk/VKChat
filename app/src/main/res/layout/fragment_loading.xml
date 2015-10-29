@@ -40,7 +40,6 @@
         android:typeface="monospace"
         android:text="REFRESH"
         android:textColor="@android:color/white"
-        android:background="@drawable/refresh_bg_selector"
         android:visibility="gone" />
 
 </FrameLayout>

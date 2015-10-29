@@ -1,7 +1,8 @@
 package ru.touchin.vkchat;
 
-/**
- * Created by Илья on 29.10.2015.
- */
 public class VKHelper {
+
+    public static final String SCOPES = "scope=messages,friends";
+    public static final String API_VERSION = "5.37";
+
 }

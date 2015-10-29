@@ -2,29 +2,21 @@ package ru.touchin.vkchat.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
 
 
 import org.zuzuk.events.BroadcastEvents;
 import org.zuzuk.events.EventAnnotation;
 import org.zuzuk.ui.UiUtils;
-import org.zuzuk.utils.serialization.json.ObjectFromJson;
 
 import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.Settings;
 import ru.touchin.vkchat.fragments.AbstractLocalLoadedFragment;
+import ru.touchin.vkchat.fragments.DialogsListFragment;
 import ru.touchin.vkchat.fragments.VKAuthFragment;
 
 @BroadcastEvents({@EventAnnotation(value = Settings.RESPONDENT_PROFILE_NAME)})
@@ -108,7 +100,8 @@ public class MainActivity extends BaseActivity {
     }
 
     public void setFirstFragment() {
-        setFirstFragment(Settings.LOGIN_DATA.get(this) == null ? VKAuthFragment.class : TaskListFragment.class);
+        setFirstFragment(Settings.VK_ACCESS_TOKEN.get(this) == null ? VKAuthFragment.class : DialogsListFragment.class);
+        setFirstFragment(VKAuthFragment.class);
     }
 
 

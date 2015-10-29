@@ -11,17 +11,19 @@ import org.zuzuk.providers.RequestPagingProvider;
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
-import ru.touchin.twitterhashtagsviabaselib.adapters.TweetListAdapter;
-import ru.touchin.twitterhashtagsviabaselib.api.creators.base.TweetTaskCreator;
-import ru.touchin.twitterhashtagsviabaselib.model.Tweet;
-import ru.touchin.vkchat.models.Dialog;
+//import ru.touchin.twitterhashtagsviabaselib.adapters.TweetListAdapter;
+//import ru.touchin.twitterhashtagsviabaselib.api.creators.base.TweetTaskCreator;
+//import ru.touchin.twitterhashtagsviabaselib.model.Tweet;
+import ru.touchin.vkchat.R;
+import ru.touchin.vkchat.adapters.DialogsAdapter;
+import ru.touchin.vkchat.models.DialogItem;
 
 
 public class DialogsListFragment extends AbstractListViewFragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     private String hashTag;
-    private RequestPagingProvider<Dialog> dialogListProvider;
-    private TweetListAdapter adapter;
+    private RequestPagingProvider<DialogItem> dialogListProvider;
+    private DialogsAdapter mAdapter;
 
     public static DialogsListFragment newInstance(String hashTag) {
         Bundle args = new Bundle();
@@ -40,7 +42,7 @@ public class DialogsListFragment extends AbstractListViewFragment {
     @Override
     protected void onCreateRenewable() {
         super.onCreateRenewable();
-        dialogListProvider = new RequestPagingProvider<>(this, new TweetTaskCreator(this, getActivity(), hashTag));
+//        dialogListProvider = new RequestPagingProvider<>(this, new TweetTaskCreator(this, getActivity(), hashTag));
     }
 
     @Override
@@ -53,16 +55,16 @@ public class DialogsListFragment extends AbstractListViewFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        adapter = new TweetListAdapter();
-        adapter.setProvider(dialogListProvider);
-        this.<ListView>findViewById(R.id.fragmentList).setAdapter(adapter);
+        mAdapter = new DialogsAdapter();
+        mAdapter.setProvider(dialogListProvider);
+//        this.<ListView>findViewById(R.id.fragmentList).setAdapter(mAdapter);
     }
 
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        adapter = null;
+        mAdapter = null;
     }
 
     @Override
@@ -72,12 +74,13 @@ public class DialogsListFragment extends AbstractListViewFragment {
 
     @Override
     protected View createContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tweet_list, container, false);
+        return null;
+//        return inflater.inflate(R.layout.fragment_tweet_list, container, false);
     }
 
     @Override
     protected void onItemClick(int position) {
         super.onItemClick(position);
-        pushFragment(TweetFragment.class, TweetFragment.createArgs(adapter.get(position)));
+//        pushFragment(TweetFragment.class, TweetFragment.createArgs(mAdapter.get(position)));
     }
 }

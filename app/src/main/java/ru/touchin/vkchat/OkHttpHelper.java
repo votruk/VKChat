@@ -1,7 +1,6 @@
 package ru.touchin.vkchat;
 
 import com.squareup.okhttp.OkHttpClient;
-import com.squawksurveys.surveys.BuildConfig;
 
 import java.util.concurrent.TimeUnit;
 
