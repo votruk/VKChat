@@ -1,0 +1,4 @@
+[submodule "base-library"]
+	path = base-library
+	url = git@github.com:TouchInstinct/base-library.git
+	branch = master

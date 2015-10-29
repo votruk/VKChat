@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "ru.touchin.vkchat"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        buildConfigField "int", "API_TIME_OUT", "20"
+        buildConfigField "String", "API_VERSION", '"1"'
+        buildConfigField "String", "VK_APP_ID", '"5.37"'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':base-library:base-library')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.octo.android.robospice:robospice:1.4.14'
+    compile 'com.j256.ormlite:ormlite-android:4.48'
+    compile('com.google.http-client:google-http-client-android:1.20.0') {
+        exclude(group: 'org.apache.httpcomponents', module: 'httpclient')
+    }
+    compile('com.google.http-client:google-http-client-jackson2:1.20.0') {
+        exclude(group: 'org.apache.httpcomponents', module: 'httpclient')
+    }
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'com.facebook.fresco:fresco:0.8.0'
+    compile 'com.facebook.fresco:imagepipeline-okhttp:0.8.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">VKChat</string>
+    <string name="profile_settings">Settings</string>
+    <string name="my_tasks">Tasks</string>
+    <string name="about">About</string>
+    <string name="gout">Logoutlo</string>
+</resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="cape_palliser">#93743d</color>
+    <color name="sundance">#cbac62</color>
+
+    <color name="red">#e33131</color>
+    <color name="black">#162130</color>
+    <color name="grey">#5a6676</color>
+    <color name="white">#ffffff</color>
+    <color name="blue">#1d7ad9</color>
+    <color name="green">#07b915</color>
+    <color name="orange">#ff9c00</color>
+
+    <color name="hint_text_color">#b9bcc0</color>
+    <color name="grey_text">#8d9bad</color>
+    <color name="grey_divider">#e5e5e5</color>
+    <color name="blue_divider">#4a95e1</color>
+    <color name="blue_grey_text">#556677</color>
+
+    <color name="bottom_line_email_color">#e7eaee</color>
+    <color name="profile_grey_text">#a8c4ed</color>
+</resources>
