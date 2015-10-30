@@ -1,4 +1,4 @@
-package ru.touchin.vkchat;
+package ru.touchin.vkchat.providers;
 
 import java.util.List;
 

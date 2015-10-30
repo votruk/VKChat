@@ -8,7 +8,7 @@ import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.models.DialogItem;
 import ru.touchin.vkchat.views.RoundedCornersImageView;
 
-public class DialogsAdapter extends BaseAdapter<DialogItem> {
+public class FriendsAdapter extends BaseAdapter<DialogItem> {
 
     private static final int EMPTY_ITEM = 0;
     private static final int ITEM = 1;

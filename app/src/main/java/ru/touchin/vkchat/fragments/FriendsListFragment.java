@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import org.zuzuk.providers.RequestPagingProvider;
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
@@ -14,21 +13,21 @@ import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 //import ru.touchin.twitterhashtagsviabaselib.adapters.TweetListAdapter;
 //import ru.touchin.twitterhashtagsviabaselib.api.creators.base.TweetTaskCreator;
 //import ru.touchin.twitterhashtagsviabaselib.model.Tweet;
-import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.adapters.DialogsAdapter;
-import ru.touchin.vkchat.models.DialogItem;
+import ru.touchin.vkchat.models.Friends;
+import ru.touchin.vkchat.providers.base.FriendsTaskCreator;
 
 
-public class DialogsListFragment extends AbstractListViewFragment {
+public class FriendsListFragment extends AbstractListViewFragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     private String hashTag;
-    private RequestPagingProvider<DialogItem> dialogListProvider;
+    private RequestPagingProvider<Friends> dialogListProvider;
     private DialogsAdapter mAdapter;
 
-    public static DialogsListFragment newInstance(String hashTag) {
+    public static FriendsListFragment newInstance(String hashTag) {
         Bundle args = new Bundle();
         args.putString(ARG_PAGE, hashTag);
-        DialogsListFragment fragment = new DialogsListFragment();
+        FriendsListFragment fragment = new FriendsListFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,7 +41,7 @@ public class DialogsListFragment extends AbstractListViewFragment {
     @Override
     protected void onCreateRenewable() {
         super.onCreateRenewable();
-//        dialogListProvider = new RequestPagingProvider<>(this, new TweetTaskCreator(this, getActivity(), hashTag));
+        dialogListProvider = new RequestPagingProvider<>(this, new FriendsTaskCreator(this, getActivity()));
     }
 
     @Override

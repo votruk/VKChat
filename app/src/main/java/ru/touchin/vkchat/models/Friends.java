@@ -4,7 +4,7 @@ import com.google.api.client.util.Key;
 
 import java.util.List;
 
-public class Dialogs {
+public class Friends {
 
     @Key("items")
     private List<DialogItem> mDialogItems;
