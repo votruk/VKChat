@@ -1,27 +1,27 @@
 package ru.touchin.vkchat.requests;
 
-import android.content.Context;
-
 import com.google.api.client.http.GenericUrl;
 
 import org.zuzuk.tasks.remote.AbstractGetJsonRequest;
 
 import ru.touchin.vkchat.Settings;
 import ru.touchin.vkchat.VKChatApp;
-import ru.touchin.vkchat.models.Friends;
+import ru.touchin.vkchat.models.VkResponse;
 
-public class BaseVkRequest extends AbstractGetJsonRequest<Friends> {
-    public static final String ADDRESS = "https://api.vk.com/method/friends.get";
+public abstract class  BaseVkRequest<T extends VkResponse> extends AbstractGetJsonRequest<T> {
+    public static final String ADDRESS = "https://api.vk.com/method";
     private int limit;
 
-    public BaseVkRequest(int limit) {
-        super(Friends.class);
+    public BaseVkRequest(final Class<T> responseResultType, int limit) {
+        super(responseResultType);
         this.limit = limit;
     }
 
+    protected abstract String getMethod();
+
     @Override
     protected String getUrl() {
-        return ADDRESS;
+        return ADDRESS + getMethod();
     }
 
     @Override

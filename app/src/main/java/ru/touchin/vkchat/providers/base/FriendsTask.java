@@ -14,7 +14,6 @@ import ru.touchin.vkchat.providers.RequestFailListener;
 import ru.touchin.vkchat.requests.FriendsRequest;
 
 public class FriendsTask extends RemoteAggregationPagingTask {
-    private int mOffset;
 
     public FriendsTask(RequestFailListener requestFailListener, int offset, int limit) {
         super(requestFailListener, offset, limit);
@@ -22,13 +21,12 @@ public class FriendsTask extends RemoteAggregationPagingTask {
 
     @Override
     public void load(RequestAndTaskExecutor executor, AggregationTaskStageState currentTaskStageState) {
-        executor.executeRequest(new FriendsRequest(getLimit(), mOffset),
+        executor.executeRequest(new FriendsRequest(getLimit(), getOffset()),
                 new AbstractRequestSuccessListener<Friends>() {
             @Override
             public void onRequestSuccess(Friends response) {
                 ArrayList<Friend> lastPageFriends = response.getFriends();
                 setPageItems(lastPageFriends);
-                mOffset = response.getFriends().size();
             }
 
         });

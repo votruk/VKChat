@@ -105,10 +105,10 @@ public class MainActivity extends BaseActivity {
     }
 
     public void setFirstFragment() {
-//        setFirstFragment(ObjectFromJson.isNull(Settings.VK_ACCESS_TOKEN.get(VKChatApp.getInstance())) ?
-//                VKAuthFragment.class : FriendsListFragment.class);
+        setFirstFragment(ObjectFromJson.isNull(Settings.VK_ACCESS_TOKEN.get(VKChatApp.getInstance())) ?
+                VKAuthFragment.class : FriendsListFragment.class);
 //        setFirstFragment(VKAuthFragment.class);
-        setFirstFragment(FriendsListFragment.class);
+//        setFirstFragment(FriendsListFragment.class);
     }
 
 

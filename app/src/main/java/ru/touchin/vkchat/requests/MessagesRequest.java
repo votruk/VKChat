@@ -7,27 +7,27 @@ import ru.touchin.vkchat.VKChatApp;
 import ru.touchin.vkchat.models.Friends;
 
 
-public class FriendsRequest extends BaseVkRequest {
-    private int mOffset;
+public class MessagesRequest extends BaseVkRequest {
+    private int offset;
+    private String userId;
 
-    public FriendsRequest(int limit, int offset) {
+    public MessagesRequest(int limit, int offset, String userId) {
         super(Friends.class, limit);
-        mOffset = offset;
+        this.offset = offset;
+        this.userId = userId;
     }
 
     @Override
     protected String getMethod() {
-        return "/friends.get";
+        return "/messages.getHistory";
     }
 
     @Override
     protected void setupUrlParameters(GenericUrl url) {
         super.setupUrlParameters(url);
-        url.put("user_id", Settings.VK_USER_ID.get(VKChatApp.getInstance()));
-        url.put("order", "name");
-        url.put("fields", "photo_max");
-        if (mOffset != 0) {
-            url.put("offset", mOffset);
+        url.put("user_id", userId);
+        if (offset != 0) {
+            url.put("offset", offset);
         }
     }
 }
