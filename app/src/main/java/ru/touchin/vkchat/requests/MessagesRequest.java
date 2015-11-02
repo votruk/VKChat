@@ -5,14 +5,15 @@ import com.google.api.client.http.GenericUrl;
 import ru.touchin.vkchat.Settings;
 import ru.touchin.vkchat.VKChatApp;
 import ru.touchin.vkchat.models.Friends;
+import ru.touchin.vkchat.models.Messages;
 
 
 public class MessagesRequest extends BaseVkRequest {
     private int offset;
-    private String userId;
+    private long userId;
 
-    public MessagesRequest(int limit, int offset, String userId) {
-        super(Friends.class, limit);
+    public MessagesRequest(int limit, int offset, long userId) {
+        super(Messages.class, limit);
         this.offset = offset;
         this.userId = userId;
     }

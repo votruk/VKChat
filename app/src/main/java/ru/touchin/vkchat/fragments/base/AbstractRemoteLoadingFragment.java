@@ -1,4 +1,4 @@
-package ru.touchin.vkchat.fragments;
+package ru.touchin.vkchat.fragments.base;
 
 import android.os.Bundle;
 import android.view.View;

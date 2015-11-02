@@ -1,4 +1,4 @@
-package ru.touchin.vkchat.adapters;
+package ru.touchin.vkchat.adapters.base;
 
 import android.view.LayoutInflater;
 import android.view.View;

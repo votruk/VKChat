@@ -12,16 +12,16 @@ public class Message extends ObjectFromJson{
     private Long mDate;
 
     @Key("out")
-    private Integer isLastOut;
+    private Integer isMessageMine;
 
     @Key("user_id")
-    private Integer mUserId;
+    private Long mUserId;
+
+    @Key("from_id")
+    private Long mFromUserId;
 
     @Key("read_state")
     private Integer mReadState;
-
-    @Key("title")
-    private String mTitle;
 
     @Key("body")
     private String mBody;
@@ -35,24 +35,23 @@ public class Message extends ObjectFromJson{
         return mDate;
     }
 
-    public Integer getIsLastOut() {
-        return isLastOut;
+    public Integer getIsMessageMine() {
+        return isMessageMine;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return mUserId;
+    }
+
+    public Long getFromUserId() {
+        return mFromUserId;
     }
 
     public Integer getReadState() {
         return mReadState;
     }
 
-    public String getTitle() {
-        return mTitle;
-    }
-
     public String getBody() {
         return mBody;
     }
-
 }

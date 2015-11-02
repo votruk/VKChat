@@ -1,4 +1,4 @@
-package ru.touchin.vkchat.fragments;
+package ru.touchin.vkchat.fragments.base;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;

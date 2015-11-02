@@ -11,6 +11,7 @@ import ru.touchin.vkchat.BuildConfig;
 import ru.touchin.vkchat.Settings;
 import ru.touchin.vkchat.VKChatApp;
 import ru.touchin.vkchat.VKHelper;
+import ru.touchin.vkchat.fragments.base.AbstractWebViewFragment;
 
 public class VKAuthFragment extends AbstractWebViewFragment {
 
@@ -42,13 +43,13 @@ public class VKAuthFragment extends AbstractWebViewFragment {
             String expiresIn = uri.getQueryParameter("expires_in");
 
             if (StringUtils.isNotBlank(accessToken)) {
-                Settings.VK_ACCESS_TOKEN.set(VKChatApp.getInstance(), "f5953553cedc415c8712fd67dd5bebd8fdee064f4c430e05da936a5268e0a8829f3f4aaeda5cd8c5c257c");
+                Settings.VK_ACCESS_TOKEN.set(VKChatApp.getInstance(), accessToken);
             } else {
                 isAnyFieldWrong = true;
             }
 
             if (StringUtils.isNotBlank(userId)) {
-                Settings.VK_USER_ID.set(VKChatApp.getInstance(), "2821");
+                Settings.VK_USER_ID.set(VKChatApp.getInstance(), userId);
             } else {
                 isAnyFieldWrong = true;
             }
@@ -65,7 +66,6 @@ public class VKAuthFragment extends AbstractWebViewFragment {
                     Toast.makeText(getActivity(), errorDescription, Toast.LENGTH_LONG).show();
                 }
             }
-
 
             popBackStack();
             return true;

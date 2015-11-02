@@ -11,31 +11,28 @@ import org.zuzuk.providers.RequestPagingProvider;
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
-import java.util.List;
-
 import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.adapters.FriendsAdapter;
+import ru.touchin.vkchat.fragments.base.AbstractListViewFragment;
 import ru.touchin.vkchat.models.Friend;
 import ru.touchin.vkchat.providers.base.FriendsTaskCreator;
 
 
 public class FriendsListFragment extends AbstractListViewFragment {
-    private RequestPagingProvider<Friend> dialogListProvider;
+    private RequestPagingProvider<Friend> friendsListProvider;
     private FriendsAdapter mAdapter;
-    private List<Friend> mFriendList;
 
 
     @Override
-
     protected void onCreateRenewable() {
         super.onCreateRenewable();
-        dialogListProvider = new RequestPagingProvider<>(this, new FriendsTaskCreator(this, getActivity()));
+        friendsListProvider = new RequestPagingProvider<>(this, new FriendsTaskCreator(this));
     }
 
     @Override
     protected void onDestroyRenewable() {
         super.onDestroyRenewable();
-        dialogListProvider = null;
+        friendsListProvider = null;
     }
 
     @Override
@@ -43,7 +40,7 @@ public class FriendsListFragment extends AbstractListViewFragment {
         super.onViewCreated(view, savedInstanceState);
 
         mAdapter = new FriendsAdapter();
-        mAdapter.setProvider(dialogListProvider);
+        mAdapter.setProvider(friendsListProvider);
         ((ListView) findViewById(R.id.fragmentList)).setAdapter(mAdapter);
     }
 
@@ -56,7 +53,7 @@ public class FriendsListFragment extends AbstractListViewFragment {
 
     @Override
     protected void loadFragmentData(RequestAndTaskExecutor executor, AggregationTaskStageState currentTaskStageState) {
-        dialogListProvider.initialize(getListPosition(), executor);
+        friendsListProvider.initialize(getListPosition(), executor);
     }
 
 
@@ -68,7 +65,7 @@ public class FriendsListFragment extends AbstractListViewFragment {
     @Override
     protected void onItemClick(int position) {
         super.onItemClick(position);
-//        pushFragment(TweetFragment.class, TweetFragment.createArgs(mAdapter.get(position)));
+        pushFragment(MessagesFragment.class, MessagesFragment.createArgs(mAdapter.get(position).getUserId()));
     }
 
 }
