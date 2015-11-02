@@ -8,7 +8,6 @@ import org.zuzuk.tasks.remote.AbstractGetJsonRequest;
 
 import ru.touchin.vkchat.Settings;
 import ru.touchin.vkchat.models.Friends;
-import ru.touchin.vkchat.models.VkResponse;
 
 public class BaseVkRequest extends AbstractGetJsonRequest<Friends> {
     public static final String ADDRESS = "https://api.vk.com/method/friends.get";

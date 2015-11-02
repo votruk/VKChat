@@ -7,36 +7,35 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import org.zuzuk.providers.ListProvider;
 import org.zuzuk.providers.RequestPagingProvider;
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
-//import ru.touchin.twitterhashtagsviabaselib.adapters.TweetListAdapter;
-//import ru.touchin.twitterhashtagsviabaselib.api.creators.base.TweetTaskCreator;
-//import ru.touchin.twitterhashtagsviabaselib.model.Tweet;
+import java.util.List;
+
+import ru.touchin.vkchat.AbstractRequestSuccessListener;
 import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.adapters.FriendsAdapter;
 import ru.touchin.vkchat.models.Friend;
+import ru.touchin.vkchat.models.Friends;
 import ru.touchin.vkchat.providers.base.FriendsTaskCreator;
+import ru.touchin.vkchat.requests.FriendsRequest;
 
 
 public class FriendsListFragment extends AbstractListViewFragment {
-    //    public static final String ARG_PAGE = "ARG_PAGE";
     private RequestPagingProvider<Friend> dialogListProvider;
     private FriendsAdapter mAdapter;
+//    private ListProvider<Friend> listProvider;
+    private List<Friend> mFriendList;
 
-//    public static FriendsListFragment newInstance(String hashTag) {
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PAGE, hashTag);
-//        FriendsListFragment fragment = new FriendsListFragment();
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
 
     @Override
+
     protected void onCreateRenewable() {
         super.onCreateRenewable();
-        dialogListProvider = new RequestPagingProvider<>(this, new FriendsTaskCreator(this, getActivity()));
+//        listProvider = new ListProvider<>();
+        dialogListProvider = new RequestPagingProvider<Friend>(this, new FriendsTaskCreator(this, getActivity()));
     }
 
     @Override
@@ -51,7 +50,7 @@ public class FriendsListFragment extends AbstractListViewFragment {
 
         mAdapter = new FriendsAdapter();
         mAdapter.setProvider(dialogListProvider);
-        ((ListView) findViewById(R.id.fragmentList)).setAdapter(mAdapter);
+        ((ListView)findViewById(R.id.fragmentList)).setAdapter(mAdapter);
     }
 
 
@@ -66,6 +65,7 @@ public class FriendsListFragment extends AbstractListViewFragment {
         dialogListProvider.initialize(getListPosition(), executor);
     }
 
+
     @Override
     protected View createContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_friends_list, container, false);
@@ -76,4 +76,5 @@ public class FriendsListFragment extends AbstractListViewFragment {
         super.onItemClick(position);
 //        pushFragment(TweetFragment.class, TweetFragment.createArgs(mAdapter.get(position)));
     }
+
 }

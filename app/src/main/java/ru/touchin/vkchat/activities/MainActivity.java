@@ -7,11 +7,15 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 import org.zuzuk.events.BroadcastEvents;
 import org.zuzuk.events.EventAnnotation;
 import org.zuzuk.ui.UiUtils;
+import org.zuzuk.utils.log.Lc;
+
+import java.util.List;
 
 import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.Settings;
@@ -81,12 +85,12 @@ public class MainActivity extends BaseActivity {
 
     private void updateActionBarState() {
         final boolean homeButtonVisible = currentFragment == null || currentFragment.isHomeButtonVisible();
-        final boolean drawerIndicatorEnabled = isCurrentFragmentTop() && homeButtonVisible;
+        final boolean enabled = isCurrentFragmentTop() && homeButtonVisible;
         if (currentFragment != null) {
             currentFragment.configureActionBar();
         }
 
-        if (!drawerIndicatorEnabled) {
+        if (!enabled) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             if (!homeButtonVisible) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -110,5 +114,19 @@ public class MainActivity extends BaseActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void onRequestFailure(List<Exception> exceptionList) {
+        Exception error = exceptionList.get(0);
+
+        if (error.getCause() instanceof Exception) {
+            error = (Exception) error.getCause();
+        }
+        Lc.e(error.getMessage());
+
+        String msg = error.getMessage();
+
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 }
