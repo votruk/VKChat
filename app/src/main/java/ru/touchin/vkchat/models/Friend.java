@@ -40,4 +40,8 @@ public class Friend extends ObjectFromJson {
     public Integer getIsOnline() {
         return mIsOnline;
     }
+
+    public String getFullName() {
+        return mFirstName + " " + mLastName;
+    }
 }

@@ -30,6 +30,13 @@
         <service android:name="org.zuzuk.tasks.local.LocalSpiceService" android:exported="false" />
         <service android:name="org.zuzuk.tasks.remote.cache.OrmLiteDatabaseCacheService"
             android:exported="false" />
+
+        <meta-data
+            android:name="org.zuzuk.settings.db_version"
+            android:value="1" />
+        <meta-data
+            android:name="org.zuzuk.settings.version"
+            android:value="1" />
     </application>
 
 </manifest>

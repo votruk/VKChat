@@ -5,10 +5,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import ru.touchin.vkchat.R;
-import ru.touchin.vkchat.models.DialogItem;
+import ru.touchin.vkchat.models.Friend;
 import ru.touchin.vkchat.views.RoundedCornersImageView;
 
-public class FriendsAdapter extends BaseAdapter<DialogItem> {
+public class FriendsAdapter extends BaseAdapter<Friend> {
 
     private static final int EMPTY_ITEM = 0;
     private static final int ITEM = 1;
@@ -30,16 +30,15 @@ public class FriendsAdapter extends BaseAdapter<DialogItem> {
 
     @Override
     public int getResourceId() {
-        return R.layout.chats_list;
+        return R.layout.friends_list;
     }
 
     @Override
-    public void fillItem(View view, DialogItem dialogItem) {
+    public void fillItem(View view, Friend friend) {
         RoundedCornersImageView profileImage = (RoundedCornersImageView) view.findViewById(R.id.profile_image_normal);
-//        Uri uri = Uri.parse(dialogItem.getUser().getNormalSizeImageURL());
-//        profileImage.setImageURI(uri);
+        Uri uri = Uri.parse(friend.getPhotoUrl());
+        profileImage.setImageURI(uri);
 
-//        ((TextView) view.findViewById(R.id.user_name_item)).setText(dialogItem.getUser().getName());
-//        ((TextView) view.findViewById(R.id.tweet_item)).setText(dialogItem.toString());
+        ((TextView) view.findViewById(R.id.friend_name)).setText(friend.getFullName());
     }
 }

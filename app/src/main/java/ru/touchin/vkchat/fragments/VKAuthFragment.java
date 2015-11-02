@@ -37,16 +37,36 @@ public class VKAuthFragment extends AbstractWebViewFragment {
     protected boolean processUrl(String url) {
         if (url.startsWith(REDIRECT_URL)) {
             Uri uri = Uri.parse(url.replaceFirst("#", "?"));
+            boolean isAnyFieldWrong = false;
             String accessToken = uri.getQueryParameter("access_token");
-
+            String userId = uri.getQueryParameter("user_id");
+            String expiresIn = uri.getQueryParameter("expires_in");
             if (StringUtils.isNotBlank(accessToken)) {
                 Settings.VK_ACCESS_TOKEN.set(getActivity(), accessToken);
             } else {
+                isAnyFieldWrong = true;
+            }
+
+            if (StringUtils.isNotBlank(userId)) {
+                Settings.VK_USER_ID.set(getActivity(), userId);
+            } else {
+                isAnyFieldWrong = true;
+            }
+
+//            if (StringUtils.isNotBlank(expiresIn)) {
+//                Settings.VK_ACCESS_TOKEN.set(getActivity(), expiresIn);
+//            } else {
+//                isAnyFieldWrong = true;
+//            }
+
+
+            if (isAnyFieldWrong) {
                 String errorDescription = uri.getQueryParameter("error_description");
                 if (StringUtils.isNotBlank(errorDescription)) {
                     Toast.makeText(getActivity(), errorDescription, Toast.LENGTH_LONG).show();
                 }
             }
+
             popBackStack();
             return true;
         }

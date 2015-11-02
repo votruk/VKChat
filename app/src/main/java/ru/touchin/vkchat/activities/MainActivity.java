@@ -16,10 +16,10 @@ import org.zuzuk.ui.UiUtils;
 import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.Settings;
 import ru.touchin.vkchat.fragments.AbstractLocalLoadedFragment;
-import ru.touchin.vkchat.fragments.DialogsListFragment;
+import ru.touchin.vkchat.fragments.FriendsListFragment;
 import ru.touchin.vkchat.fragments.VKAuthFragment;
 
-@BroadcastEvents({@EventAnnotation(value = Settings.RESPONDENT_PROFILE_NAME)})
+//@BroadcastEvents({@EventAnnotation(value = Settings.RESPONDENT_PROFILE_NAME)})
 public class MainActivity extends BaseActivity {
 
 
@@ -54,7 +54,6 @@ public class MainActivity extends BaseActivity {
         super.onStop();
         currentFragment = null;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
@@ -100,8 +99,8 @@ public class MainActivity extends BaseActivity {
     }
 
     public void setFirstFragment() {
-        setFirstFragment(Settings.VK_ACCESS_TOKEN.get(this) == null ? VKAuthFragment.class : DialogsListFragment.class);
-        setFirstFragment(VKAuthFragment.class);
+        setFirstFragment(Settings.VK_ACCESS_TOKEN.get(this) == null ? VKAuthFragment.class : FriendsListFragment.class);
+//        setFirstFragment(VKAuthFragment.class);
     }
 
 

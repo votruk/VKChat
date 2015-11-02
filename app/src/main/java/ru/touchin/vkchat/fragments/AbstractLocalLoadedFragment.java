@@ -15,7 +15,7 @@ import org.zuzuk.ui.UiUtils;
 import java.util.List;
 
 import ru.touchin.vkchat.R;
-import ru.touchin.vkchat.RequestFailListener;
+import ru.touchin.vkchat.providers.RequestFailListener;
 
 public abstract class AbstractLocalLoadedFragment extends AbstractTransitionFragment implements RequestFailListener {
     private static final String CURRENT_FOCUS_ID_STATE = "CURRENT_FOCUS_ID_STATE";

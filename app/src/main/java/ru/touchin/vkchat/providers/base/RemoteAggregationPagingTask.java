@@ -5,6 +5,9 @@ import org.zuzuk.tasks.aggregationtask.AggregationTaskStage;
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import ru.touchin.vkchat.providers.RequestFailListener;
 
 public abstract class RemoteAggregationPagingTask<TItem> implements AggregationPagingTask<TItem> {
 

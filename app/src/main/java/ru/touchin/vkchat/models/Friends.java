@@ -2,11 +2,17 @@ package ru.touchin.vkchat.models;
 
 import com.google.api.client.util.Key;
 
+import org.zuzuk.utils.serialization.json.ObjectFromJson;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class Friends {
+public class Friends extends VkResponse {
 
-    @Key("items")
-    private List<DialogItem> mDialogItems;
+    @Key("response")
+    private ArrayList<Friend> mFriends;
 
+    public ArrayList<Friend> getFriends() {
+        return mFriends;
+    }
 }

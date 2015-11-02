@@ -2,6 +2,7 @@ package ru.touchin.vkchat;
 
 import android.app.Application;
 import android.content.res.Configuration;
+import android.os.StrictMode;
 import android.util.Log;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -9,6 +10,7 @@ import com.facebook.imagepipeline.backends.okhttp.OkHttpImagePipelineConfigFacto
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.squareup.okhttp.OkHttpClient;
 
+import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 import org.zuzuk.tasks.aggregationtask.TaskExecutorHelper;
 import org.zuzuk.tasks.remote.base.TaskExecutorHelperCreator;
 import org.zuzuk.utils.log.LcHelper;
@@ -36,7 +38,12 @@ public class VKChatApp extends Application implements TaskExecutorHelperCreator 
 
     @Override
     public TaskExecutorHelper createTaskExecutorHelper() {
-        return new ApiTaskExecutorHelper();
+        return new TaskExecutorHelper(){
+            @Override
+            protected RequestAndTaskExecutor createRequestAndTaskExecutor() {
+                return new RequestAndTaskExecutor();
+            }
+        };
     }
 
     @Override

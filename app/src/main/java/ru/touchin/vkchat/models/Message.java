@@ -2,7 +2,9 @@ package ru.touchin.vkchat.models;
 
 import com.google.api.client.util.Key;
 
-public class Message {
+import org.zuzuk.utils.serialization.json.ObjectFromJson;
+
+public class Message extends ObjectFromJson{
     @Key("id")
     private Long mId;
 

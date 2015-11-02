@@ -4,23 +4,19 @@ import com.google.api.client.util.Key;
 
 import org.zuzuk.utils.serialization.json.ObjectFromJson;
 
-public class VkResponse<T> extends ObjectFromJson {
-    @Key("response")
-    private T response;
-    @Key("error_code")
-    private int errorCode;
-    @Key("error_message")
-    private String errorMessage;
+public class VkResponse extends ObjectFromJson {
+//    @Key("response")
+//    private T response;
+    @Key("error")
+    private VkError mError;
 
-    public T getResponse() {
-        return response;
+    public VkError getError() {
+        return mError;
     }
 
-    public int getErrorCode() {
-        return errorCode;
-    }
+//    public T getResponse() {
+//        return response;
+//    }
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
+
 }

@@ -1,26 +1,37 @@
 package ru.touchin.vkchat.providers.base;
 
+import android.content.Context;
+
+import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
+import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
+
+import java.util.ArrayList;
+
+import ru.touchin.vkchat.AbstractRequestSuccessListener;
+import ru.touchin.vkchat.models.Friend;
+import ru.touchin.vkchat.models.Friends;
+import ru.touchin.vkchat.models.VkResponse;
+import ru.touchin.vkchat.providers.RequestFailListener;
+import ru.touchin.vkchat.requests.FriendsRequest;
+
 public class FriendsTask extends RemoteAggregationPagingTask {
     private Context context;
-    private String hashTag;
-    private String lastTweetId;
 
-    public FriendsTask(RequestFailListener requestFailListener, int offset, int limit, Context context, String hashTag) {
+    public FriendsTask(RequestFailListener requestFailListener, int offset, int limit, Context context) {
         super(requestFailListener, offset, limit);
         this.context = context;
-        this.hashTag = hashTag;
     }
 
     @Override
     public void load(RequestAndTaskExecutor executor, AggregationTaskStageState currentTaskStageState) {
-        executor.executeRequest(new ElderTweetsRequest(context, hashTag, getLimit(), lastTweetId) {
-        }, new RequestSuccessListener<Tweets>() {
+        executor.executeRequest(new FriendsRequest(context, getLimit()) {
+        }, new AbstractRequestSuccessListener<Friends>() {
             @Override
-            public void onRequestSuccess(Tweets tweets) {
-                ArrayList<Tweet> lastPageTweets = tweets.getTweets();
-                setPageItems(lastPageTweets);
-                lastTweetId = lastPageTweets.get(lastPageTweets.size() - 1).getId();
+            public void onRequestSuccess(Friends response) {
+                ArrayList<Friend> lastPageFriends = response.getFriends();
+                setPageItems(lastPageFriends);
             }
+
         });
     }
 }

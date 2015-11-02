@@ -1,19 +1,23 @@
 package ru.touchin.vkchat.requests;
 
+import android.content.Context;
+
+import com.google.api.client.http.GenericUrl;
+
 import org.zuzuk.tasks.remote.AbstractGetJsonRequest;
 
-import ru.touchin.vkchat.models.Friend;
+import ru.touchin.vkchat.Settings;
+import ru.touchin.vkchat.models.Friends;
+import ru.touchin.vkchat.models.VkResponse;
 
-public class BaseVkRequest extends AbstractGetJsonRequest<Friend> {
-    public static final String ADDRESS = "https://api.twitter.com/1.1/search/tweets.json";
-    private Context context;
-    private String hashTag;
+public class BaseVkRequest extends AbstractGetJsonRequest<Friends> {
+    public static final String ADDRESS = "https://api.vk.com/method/friends.get";
+    protected Context context;
     private int limit;
 
-    public BaseVkRequest(Context context, String hashTag, int limit) {
-        super(Tweets.class);
+    public BaseVkRequest(Context context, int limit) {
+        super(Friends.class);
         this.context = context;
-        this.hashTag = hashTag;
         this.limit = limit;
     }
 
@@ -24,13 +28,8 @@ public class BaseVkRequest extends AbstractGetJsonRequest<Friend> {
 
     @Override
     protected void setupUrlParameters(GenericUrl url) {
-        url.put("q", "%23" + hashTag);
+        url.put("access_token", Settings.VK_ACCESS_TOKEN.get(context));
         url.put("count", limit);
     }
 
-    @Override
-    protected Request.Builder createHttpRequest() throws IOException {
-        String auth = "Bearer " + context.getString(R.string.access_token);
-        return super.createHttpRequest().header("Authorization", auth);
-    }
 }

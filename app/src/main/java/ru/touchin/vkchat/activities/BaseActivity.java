@@ -1,18 +1,13 @@
 package ru.touchin.vkchat.activities;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.widget.Toast;
 
-import org.zuzuk.events.BroadcastEvents;
-import org.zuzuk.events.EventAnnotation;
 import org.zuzuk.ui.activities.AbstractExecutorActivity;
 import org.zuzuk.utils.log.Lc;
 
 import java.util.List;
 
-import ru.touchin.vkchat.RequestFailListener;
+import ru.touchin.vkchat.providers.RequestFailListener;
 
 //@BroadcastEvents({@EventAnnotation(BeaconLogicHandler.ON_ENTRY),
 //        @EventAnnotation(BeaconLogicHandler.ON_EXIT),
