@@ -1,30 +1,27 @@
 package ru.touchin.vkchat.requests;
 
-import android.content.Context;
-
 import com.google.api.client.http.GenericUrl;
 
-import org.zuzuk.settings.Setting;
-
 import ru.touchin.vkchat.Settings;
+import ru.touchin.vkchat.VKChatApp;
 
 
 public class FriendsRequest extends BaseVkRequest {
-    private int mCount;
+    private int mOffset;
 
-    public FriendsRequest(Context context, int limit, int count) {
-        super(context, limit);
-        mCount = count;
+    public FriendsRequest(int limit, int offset) {
+        super(limit);
+        mOffset = offset;
     }
 
     @Override
     protected void setupUrlParameters(GenericUrl url) {
         super.setupUrlParameters(url);
-        url.put("user_id", Settings.VK_USER_ID.get(context));
+        url.put("user_id", Settings.VK_USER_ID.get(VKChatApp.getInstance()));
         url.put("order", "name");
         url.put("fields", "photo_max");
-        if (mCount != 0) {
-            url.put("offset", mCount);
+        if (mOffset != 0) {
+            url.put("offset", mOffset);
         }
     }
 }

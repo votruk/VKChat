@@ -9,6 +9,9 @@ import android.widget.TextView;
 import org.zuzuk.providers.ListProvider;
 import org.zuzuk.providers.RequestPagingProvider;
 import org.zuzuk.ui.adapters.AbstractPagerAdapterWithProgressBar;
+import org.zuzuk.ui.views.ReenterableSimpleDraweeView;
+
+import java.net.URL;
 
 import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.models.Friend;
@@ -19,14 +22,13 @@ public class FriendsAdapter extends AbstractPagerAdapterWithProgressBar<Friend, 
 
     @Override
     public View newRealView(int position, LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.fragment_friends_list, container, false);
+        return inflater.inflate(R.layout.friends_list, container, false);
     }
 
     @Override
     public void bindRealView(View view, Friend friend, int position) {
-        RoundedCornersImageView profileImage = (RoundedCornersImageView) view.findViewById(R.id.profile_image_normal);
-        Uri uri = Uri.parse(friend.getPhotoUrl());
-        profileImage.setImageURI(uri);
+        ReenterableSimpleDraweeView profileImage = (ReenterableSimpleDraweeView) view.findViewById(R.id.profile_image_normal);
+        profileImage.setUrl(friend.getPhotoUrl());
 
         ((TextView) view.findViewById(R.id.friend_name)).setText(friend.getFullName());
     }

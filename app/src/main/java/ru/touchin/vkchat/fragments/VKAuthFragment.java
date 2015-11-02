@@ -9,6 +9,7 @@ import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
 import ru.touchin.vkchat.BuildConfig;
 import ru.touchin.vkchat.Settings;
+import ru.touchin.vkchat.VKChatApp;
 import ru.touchin.vkchat.VKHelper;
 
 public class VKAuthFragment extends AbstractWebViewFragment {
@@ -41,13 +42,13 @@ public class VKAuthFragment extends AbstractWebViewFragment {
             String expiresIn = uri.getQueryParameter("expires_in");
 
             if (StringUtils.isNotBlank(accessToken)) {
-                Settings.VK_ACCESS_TOKEN.set(getActivity(), accessToken);
+                Settings.VK_ACCESS_TOKEN.set(VKChatApp.getInstance(), "f5953553cedc415c8712fd67dd5bebd8fdee064f4c430e05da936a5268e0a8829f3f4aaeda5cd8c5c257c");
             } else {
                 isAnyFieldWrong = true;
             }
 
             if (StringUtils.isNotBlank(userId)) {
-                Settings.VK_USER_ID.set(getActivity(), userId);
+                Settings.VK_USER_ID.set(VKChatApp.getInstance(), "2821");
             } else {
                 isAnyFieldWrong = true;
             }

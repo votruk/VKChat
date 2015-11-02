@@ -46,18 +46,8 @@ public class VKChatApp extends Application implements TaskExecutorHelperCreator 
         };
     }
 
-    @Override
-    public void onConfigurationChanged(final Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        setLocale(newConfig.locale);
-    }
-
     private static void initializeSingletons(final VKChatApp instance) {
         VKChatApp.instance = instance;
-    }
-
-    private static void setLocale(final Locale locale) {
-        VKChatApp.currentLocale = locale;
     }
 
     public static VKChatApp getInstance() {

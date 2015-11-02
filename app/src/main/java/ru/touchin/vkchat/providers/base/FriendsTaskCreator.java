@@ -17,7 +17,7 @@ public class FriendsTaskCreator extends RemoteAggregationPagingTaskCreator {
 
     @Override
     public AggregationPagingTask createPagingTask(int offset, int limit) {
-        return new FriendsTask(getRequestFailListener(), offset, limit, context);
+        return new FriendsTask(getRequestFailListener(), offset, limit);
     }
 
 }

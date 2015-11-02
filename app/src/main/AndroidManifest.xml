@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.touchin.vkchat" >
+<manifest package="ru.touchin.vkchat"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
+        android:name=".VKChatApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".VKChatApp">
-        <activity android:name=".activities.MainActivity"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activities.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
         </activity>
 
-        <service android:name="org.zuzuk.tasks.local.LocalSpiceService" android:exported="false" />
-        <service android:name="org.zuzuk.tasks.remote.cache.OrmLiteDatabaseCacheService"
-            android:exported="false" />
+        <service
+            android:name="org.zuzuk.tasks.local.LocalSpiceService"
+            android:exported="false"/>
+        <service
+            android:name="org.zuzuk.tasks.remote.cache.OrmLiteDatabaseCacheService"
+            android:exported="false"/>
 
         <meta-data
             android:name="org.zuzuk.settings.db_version"
-            android:value="1" />
+            android:value="1"/>
         <meta-data
             android:name="org.zuzuk.settings.version"
-            android:value="1" />
+            android:value="1"/>
     </application>
 
 </manifest>

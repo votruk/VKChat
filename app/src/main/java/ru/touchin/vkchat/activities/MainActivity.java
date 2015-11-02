@@ -14,11 +14,13 @@ import org.zuzuk.events.BroadcastEvents;
 import org.zuzuk.events.EventAnnotation;
 import org.zuzuk.ui.UiUtils;
 import org.zuzuk.utils.log.Lc;
+import org.zuzuk.utils.serialization.json.ObjectFromJson;
 
 import java.util.List;
 
 import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.Settings;
+import ru.touchin.vkchat.VKChatApp;
 import ru.touchin.vkchat.fragments.AbstractLocalLoadedFragment;
 import ru.touchin.vkchat.fragments.FriendsListFragment;
 import ru.touchin.vkchat.fragments.VKAuthFragment;
@@ -103,8 +105,10 @@ public class MainActivity extends BaseActivity {
     }
 
     public void setFirstFragment() {
-        setFirstFragment(Settings.VK_ACCESS_TOKEN.get(this) == null ? VKAuthFragment.class : FriendsListFragment.class);
+//        setFirstFragment(ObjectFromJson.isNull(Settings.VK_ACCESS_TOKEN.get(VKChatApp.getInstance())) ?
+//                VKAuthFragment.class : FriendsListFragment.class);
 //        setFirstFragment(VKAuthFragment.class);
+        setFirstFragment(FriendsListFragment.class);
     }
 
 
