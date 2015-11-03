@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public class Messages extends VkResponse {
 
     @Key("response")
-    private ArrayList<Message> messages;
+    private ArrayList<Object> messages;
 
-    public ArrayList<Message> getMessages() {
+    public ArrayList<Object> getMessages() {
         return messages;
     }
 }

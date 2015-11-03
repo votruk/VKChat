@@ -6,6 +6,7 @@ import ru.touchin.vkchat.Settings;
 import ru.touchin.vkchat.VKChatApp;
 import ru.touchin.vkchat.models.Friends;
 import ru.touchin.vkchat.models.Messages;
+import ru.touchin.vkchat.models.MessagesObject;
 
 
 public class MessagesRequest extends BaseVkRequest {
