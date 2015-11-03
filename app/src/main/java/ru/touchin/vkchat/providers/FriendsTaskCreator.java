@@ -1,11 +1,9 @@
-package ru.touchin.vkchat.providers.base;
+package ru.touchin.vkchat.providers;
 
-
-import android.content.Context;
 
 import org.zuzuk.tasks.aggregationtask.AggregationPagingTask;
 
-import ru.touchin.vkchat.providers.RequestFailListener;
+import ru.touchin.vkchat.providers.base.RemoteAggregationPagingTaskCreator;
 
 public class FriendsTaskCreator extends RemoteAggregationPagingTaskCreator {
 

@@ -15,7 +15,7 @@ import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.adapters.FriendsAdapter;
 import ru.touchin.vkchat.fragments.base.AbstractListViewFragment;
 import ru.touchin.vkchat.models.Friend;
-import ru.touchin.vkchat.providers.base.FriendsTaskCreator;
+import ru.touchin.vkchat.providers.FriendsTaskCreator;
 
 
 public class FriendsListFragment extends AbstractListViewFragment {

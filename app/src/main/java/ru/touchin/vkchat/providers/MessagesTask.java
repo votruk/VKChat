@@ -1,4 +1,4 @@
-package ru.touchin.vkchat.providers.base;
+package ru.touchin.vkchat.providers;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -9,6 +9,7 @@ import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import ru.touchin.vkchat.AbstractRequestSuccessListener;
 import ru.touchin.vkchat.models.Friend;
@@ -18,6 +19,7 @@ import ru.touchin.vkchat.models.Messages;
 import ru.touchin.vkchat.models.MessagesObject;
 import ru.touchin.vkchat.models.MessagesResponse;
 import ru.touchin.vkchat.providers.RequestFailListener;
+import ru.touchin.vkchat.providers.base.RemoteAggregationPagingTask;
 import ru.touchin.vkchat.requests.FriendsRequest;
 import ru.touchin.vkchat.requests.MessagesRequest;
 
@@ -37,6 +39,7 @@ public class MessagesTask extends RemoteAggregationPagingTask {
             public void onRequestSuccess(MessagesResponse response) {
 
                 ArrayList<Message> messages = response.getResponse().getMessages();
+//                Collections.reverse(messages);
                 setPageItems(messages);
             }
 

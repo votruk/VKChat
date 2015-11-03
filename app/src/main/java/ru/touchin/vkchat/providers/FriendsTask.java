@@ -1,4 +1,4 @@
-package ru.touchin.vkchat.providers.base;
+package ru.touchin.vkchat.providers;
 
 import android.content.Context;
 
@@ -12,6 +12,7 @@ import ru.touchin.vkchat.models.Friend;
 import ru.touchin.vkchat.models.Friends;
 import ru.touchin.vkchat.models.FriendsResponse;
 import ru.touchin.vkchat.providers.RequestFailListener;
+import ru.touchin.vkchat.providers.base.RemoteAggregationPagingTask;
 import ru.touchin.vkchat.requests.FriendsRequest;
 
 public class FriendsTask extends RemoteAggregationPagingTask {

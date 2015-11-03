@@ -3,7 +3,10 @@ package ru.touchin.vkchat;
 import android.app.Application;
 import android.content.res.Configuration;
 import android.os.StrictMode;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.backends.okhttp.OkHttpImagePipelineConfigFactory;
@@ -34,6 +37,7 @@ public class VKChatApp extends Application implements TaskExecutorHelperCreator 
         OkHttpHelper.setTimeouts(httpClient);
         final ImagePipelineConfig config = OkHttpImagePipelineConfigFactory.newBuilder(getApplicationContext(), httpClient).build();
         Fresco.initialize(getApplicationContext(), config);
+
     }
 
     @Override

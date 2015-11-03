@@ -1,10 +1,14 @@
 package ru.touchin.vkchat.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ListView;
 
 import org.zuzuk.providers.RequestPagingProvider;
@@ -13,15 +17,17 @@ import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
 import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.adapters.MessagesAdapter;
+import ru.touchin.vkchat.fragments.base.AbstractInverseFragment;
 import ru.touchin.vkchat.fragments.base.AbstractListViewFragment;
 import ru.touchin.vkchat.models.Message;
-import ru.touchin.vkchat.providers.base.MessagesTaskCreator;
+import ru.touchin.vkchat.providers.InverseRequestPagingProvider;
+import ru.touchin.vkchat.providers.MessagesTaskCreator;
 
-public class MessagesFragment extends AbstractListViewFragment {
+public class MessagesFragment extends AbstractInverseFragment {
     public static final String USER_ID = "userId";
     private long userId;
 
-    private RequestPagingProvider<Message> messagesListProvider;
+    private InverseRequestPagingProvider<Message> messagesListProvider;
     private MessagesAdapter mAdapter;
 
 
@@ -29,7 +35,7 @@ public class MessagesFragment extends AbstractListViewFragment {
     protected void onCreateRenewable() {
         super.onCreateRenewable();
         userId = (long) getArguments().get(USER_ID);
-        messagesListProvider = new RequestPagingProvider<>(this, new MessagesTaskCreator(this, userId));
+        messagesListProvider = new InverseRequestPagingProvider<>(this, new MessagesTaskCreator(this, userId));
     }
 
     @Override
@@ -52,8 +58,12 @@ public class MessagesFragment extends AbstractListViewFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        mAdapter = new MessagesAdapter();
+        WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
+        float dp = displayMetrics.density;
+        mAdapter = new MessagesAdapter(width, dp);
         mAdapter.setProvider(messagesListProvider);
         ((ListView) findViewById(R.id.messages_list)).setAdapter(mAdapter);
     }
@@ -68,4 +78,5 @@ public class MessagesFragment extends AbstractListViewFragment {
         super.onDestroyView();
         mAdapter = null;
     }
+
 }
