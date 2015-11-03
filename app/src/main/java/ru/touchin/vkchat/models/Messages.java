@@ -2,14 +2,30 @@ package ru.touchin.vkchat.models;
 
 import com.google.api.client.util.Key;
 
+import org.zuzuk.utils.serialization.json.ObjectFromJson;
+
 import java.util.ArrayList;
 
-public class Messages extends VkResponse {
+public class Messages extends ObjectFromJson {
 
-    @Key("response")
-    private ArrayList<Object> messages;
+    @Key("items")
+    private ArrayList<Message> messages;
 
-    public ArrayList<Object> getMessages() {
+    @Key("count")
+    private Integer count;
+
+    @Key("unread")
+    private Integer unused;
+
+    public ArrayList<Message> getMessages() {
         return messages;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public Integer getUnused() {
+        return unused;
     }
 }

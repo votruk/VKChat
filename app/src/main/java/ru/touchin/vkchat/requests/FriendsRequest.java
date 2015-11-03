@@ -5,13 +5,15 @@ import com.google.api.client.http.GenericUrl;
 import ru.touchin.vkchat.Settings;
 import ru.touchin.vkchat.VKChatApp;
 import ru.touchin.vkchat.models.Friends;
+import ru.touchin.vkchat.models.FriendsResponse;
+import ru.touchin.vkchat.models.VkResponse;
 
 
-public class FriendsRequest extends BaseVkRequest {
+public class FriendsRequest extends BaseVkRequest<FriendsResponse> {
     private int mOffset;
 
     public FriendsRequest(int limit, int offset) {
-        super(Friends.class, limit);
+        super(FriendsResponse.class, limit);
         mOffset = offset;
     }
 
@@ -30,4 +32,5 @@ public class FriendsRequest extends BaseVkRequest {
             url.put("offset", mOffset);
         }
     }
+
 }

@@ -6,7 +6,7 @@ import org.zuzuk.utils.serialization.json.ObjectFromJson;
 
 public class Friend extends ObjectFromJson {
 
-    @Key("user_id")
+    @Key("id")
     private Long mUserId;
 
     @Key("first_name")

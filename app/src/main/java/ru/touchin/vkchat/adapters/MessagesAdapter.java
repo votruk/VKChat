@@ -1,5 +1,6 @@
 package ru.touchin.vkchat.adapters;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,8 @@ public class MessagesAdapter extends AbstractPagerAdapterWithProgressBar<Message
 
     @Override
     public void bindRealView(View view, Message message, int position) {
-        ((TextView) view.findViewById(R.id.message_body)).setText(message.getBody());
 
+        ((TextView) view.findViewById(R.id.message_body)).setText(Html.fromHtml(message.getBody()));
     }
+
 }

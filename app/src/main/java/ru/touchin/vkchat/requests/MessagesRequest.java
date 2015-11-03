@@ -7,6 +7,7 @@ import ru.touchin.vkchat.VKChatApp;
 import ru.touchin.vkchat.models.Friends;
 import ru.touchin.vkchat.models.Messages;
 import ru.touchin.vkchat.models.MessagesObject;
+import ru.touchin.vkchat.models.MessagesResponse;
 
 
 public class MessagesRequest extends BaseVkRequest {
@@ -14,7 +15,7 @@ public class MessagesRequest extends BaseVkRequest {
     private long userId;
 
     public MessagesRequest(int limit, int offset, long userId) {
-        super(Messages.class, limit);
+        super(MessagesResponse.class, limit);
         this.offset = offset;
         this.userId = userId;
     }

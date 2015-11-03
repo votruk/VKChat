@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:divider="@color/grey_divider"
-            android:dividerHeight="1dp" />
+            android:dividerHeight="1dp"/>
 
 
 </LinearLayout>

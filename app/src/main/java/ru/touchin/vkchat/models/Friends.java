@@ -7,10 +7,13 @@ import org.zuzuk.utils.serialization.json.ObjectFromJson;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Friends extends VkResponse {
+public class Friends extends ObjectFromJson {
 
-    @Key("response")
+    @Key("items")
     private ArrayList<Friend> mFriends;
+
+    @Key("count")
+    private Integer count;
 
     public ArrayList<Friend> getFriends() {
         return mFriends;

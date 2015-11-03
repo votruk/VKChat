@@ -16,6 +16,7 @@ import ru.touchin.vkchat.models.Friends;
 import ru.touchin.vkchat.models.Message;
 import ru.touchin.vkchat.models.Messages;
 import ru.touchin.vkchat.models.MessagesObject;
+import ru.touchin.vkchat.models.MessagesResponse;
 import ru.touchin.vkchat.providers.RequestFailListener;
 import ru.touchin.vkchat.requests.FriendsRequest;
 import ru.touchin.vkchat.requests.MessagesRequest;
@@ -31,23 +32,11 @@ public class MessagesTask extends RemoteAggregationPagingTask {
     @Override
     public void load(RequestAndTaskExecutor executor, AggregationTaskStageState currentTaskStageState) {
         executor.executeRequest(new MessagesRequest(getLimit(), getOffset(), userId),
-                new AbstractRequestSuccessListener<Messages>() {
+                new AbstractRequestSuccessListener<MessagesResponse>() {
             @Override
-            public void onRequestSuccess(Messages response) {
-                ArrayList<Message> messages = new ArrayList<>();
-                ObjectMapper mapper = new ObjectMapper();
-                for (Object o : response.getMessages()) {
-                    try {
-                        Message m = mapper.readValue(mapper.writeValueAsString(o), Message.class);
-                        messages.add(m);
-                    } catch (JsonMappingException e) {
-                        e.printStackTrace();
-                    } catch (JsonParseException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+            public void onRequestSuccess(MessagesResponse response) {
+
+                ArrayList<Message> messages = response.getResponse().getMessages();
                 setPageItems(messages);
             }
 
