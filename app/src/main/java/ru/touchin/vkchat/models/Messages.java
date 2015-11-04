@@ -17,6 +17,8 @@ public class Messages extends ObjectFromJson {
     @Key("unread")
     private Integer unused;
 
+
+
     public ArrayList<Message> getMessages() {
         return messages;
     }
@@ -28,4 +30,6 @@ public class Messages extends ObjectFromJson {
     public Integer getUnused() {
         return unused;
     }
+
+
 }

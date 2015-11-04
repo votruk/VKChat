@@ -4,6 +4,8 @@ import com.google.api.client.util.Key;
 
 import org.zuzuk.utils.serialization.json.ObjectFromJson;
 
+import java.util.ArrayList;
+
 public class Message extends ObjectFromJson{
     @Key("id")
     private Long mId;
@@ -25,6 +27,9 @@ public class Message extends ObjectFromJson{
 
     @Key("body")
     private String mBody;
+
+    @Key("attachments")
+    private ArrayList<Attachment> mAttachments;
 
 
     public Long getId() {
@@ -53,5 +58,9 @@ public class Message extends ObjectFromJson{
 
     public String getBody() {
         return mBody;
+    }
+
+    public ArrayList<Attachment> getAttachments() {
+        return mAttachments;
     }
 }

@@ -27,7 +27,6 @@ public class MessagesTask extends RemoteAggregationPagingTask {
             public void onRequestSuccess(MessagesResponse response) {
 
                 ArrayList<Message> messages = response.getResponse().getMessages();
-//                Collections.reverse(messages);
                 setPageItems(messages);
             }
 
