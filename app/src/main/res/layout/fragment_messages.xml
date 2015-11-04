@@ -9,10 +9,37 @@
         <org.zuzuk.ui.views.hacked.CustomListView
             android:id="@+id/messages_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:background="@color/white"
             android:stackFromBottom="true"
             android:transcriptMode="normal"/>
+
+    <LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="0"
+		android:background="@color/light_grey">
+		<EditText
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:hint="Текст сообщения"
+			android:textColor="@color/black"
+			android:textColorHint="@color/black"
+			android:layout_marginLeft="16dp"
+			android:maxHeight="116dp"
+			android:id="@+id/new_message_text"/>
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="0"
+			android:padding="8dp"
+			android:layout_marginLeft="16dp"
+			android:src="@drawable/ic_send_grey_24dp"
+			android:layout_gravity="bottom"
+			android:id="@+id/send_message"/>
+	</LinearLayout>
 
 
 </LinearLayout>

@@ -11,10 +11,12 @@ import ru.touchin.vkchat.models.VkResponse;
 
 public class FriendsRequest extends BaseVkRequest<FriendsResponse> {
     private int mOffset;
+    private int limit;
 
     public FriendsRequest(int limit, int offset) {
-        super(FriendsResponse.class, limit);
+        super(FriendsResponse.class);
         mOffset = offset;
+        this.limit = limit;
     }
 
     @Override
@@ -28,6 +30,7 @@ public class FriendsRequest extends BaseVkRequest<FriendsResponse> {
         url.put("user_id", Settings.VK_USER_ID.get(VKChatApp.getInstance()));
         url.put("order", "name");
         url.put("fields", "photo_max");
+        url.put("count", limit);
         if (mOffset != 0) {
             url.put("offset", mOffset);
         }

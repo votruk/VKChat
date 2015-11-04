@@ -34,7 +34,7 @@ public class MessagesAdapter extends AbstractPagerAdapterWithProgressBar<Message
         this.screenWidth = screenWidth;
         this.screenDencity = screenDensity;
 
-        bigPadding = (int) (screenWidth * 0.4);
+        bigPadding = (int) ((screenWidth * 0.2) / screenDensity);
     }
 
 
@@ -61,6 +61,8 @@ public class MessagesAdapter extends AbstractPagerAdapterWithProgressBar<Message
             body.setBackgroundResource(R.drawable.my_message2);
             layout.setPadding((int) (bigPadding * screenDencity), (int) (smallPadding * screenDencity),
                     (int) (smallPadding * screenDencity), (int) (smallPadding * screenDencity));
+            dateTV.setGravity(Gravity.LEFT);
+
             body.setTextColor(Color.WHITE);
         } else {
             body.setBackgroundResource(R.drawable.not_my);
@@ -72,6 +74,5 @@ public class MessagesAdapter extends AbstractPagerAdapterWithProgressBar<Message
 
 
     }
-
 
 }

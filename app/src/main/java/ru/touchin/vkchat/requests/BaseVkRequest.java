@@ -11,11 +11,9 @@ import ru.touchin.vkchat.models.VkResponse;
 
 public abstract class  BaseVkRequest<T extends VkResponse> extends AbstractGetJsonRequest<T> {
     public static final String ADDRESS = "https://api.vk.com/method";
-    private int limit;
 
-    public BaseVkRequest(final Class<T> responseResultType, int limit) {
+    public BaseVkRequest(final Class<T> responseResultType) {
         super(responseResultType);
-        this.limit = limit;
     }
 
     protected abstract String getMethod();
@@ -28,7 +26,7 @@ public abstract class  BaseVkRequest<T extends VkResponse> extends AbstractGetJs
     @Override
     protected void setupUrlParameters(GenericUrl url) {
         url.put("access_token", Settings.VK_ACCESS_TOKEN.get(VKChatApp.getInstance()));
-        url.put("count", limit);
+
         url.put("v", VKHelper.API_VERSION);
     }
 

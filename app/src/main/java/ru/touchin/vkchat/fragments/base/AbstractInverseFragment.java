@@ -34,9 +34,9 @@ public abstract class AbstractInverseFragment extends AbstractPullToRefreshFragm
 
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
-        if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
-            setListPosition(getListPosition() + 20);
-        }
+//        if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+//            setListPosition(getListPosition() + 20);
+//        }
     }
 
     @Override
@@ -162,5 +162,6 @@ public abstract class AbstractInverseFragment extends AbstractPullToRefreshFragm
         super.onDestroyView();
         absListView = null;
     }
+
 
 }

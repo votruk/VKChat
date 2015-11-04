@@ -6,6 +6,8 @@ import org.zuzuk.tasks.aggregationtask.AggregationTaskExecutor;
 
 import java.util.List;
 
+import ru.touchin.vkchat.fragments.MessagesFragment;
+
 public class InverseRequestPagingProvider<T> extends RequestPagingProvider<T> {
 
 
@@ -21,5 +23,10 @@ public class InverseRequestPagingProvider<T> extends RequestPagingProvider<T> {
     @Override
     public T getItem(int position) {
         return super.getItem(getTotalCount() - position - 1);
+    }
+
+    @Override
+    public void onDataSetChanged() {
+        super.onDataSetChanged();
     }
 }

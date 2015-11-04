@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingLeft="8dp"
-    android:paddingRight="8dp">
+    android:paddingRight="8dp"
+    android:clickable="false"
+    android:focusable="false">
 
     <TextView
         android:id="@+id/message_date"

@@ -2,6 +2,7 @@ package ru.touchin.vkchat.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
 import ru.touchin.vkchat.R;
+import ru.touchin.vkchat.activities.MainActivity;
 import ru.touchin.vkchat.adapters.FriendsAdapter;
 import ru.touchin.vkchat.fragments.base.AbstractListViewFragment;
 import ru.touchin.vkchat.models.Friend;
@@ -42,6 +44,8 @@ public class FriendsListFragment extends AbstractListViewFragment {
         mAdapter = new FriendsAdapter();
         mAdapter.setProvider(friendsListProvider);
         ((ListView) findViewById(R.id.fragmentList)).setAdapter(mAdapter);
+
+//        ((AppCompatActivity) getActivity()).getSupportActionBar().set
     }
 
 
@@ -65,7 +69,20 @@ public class FriendsListFragment extends AbstractListViewFragment {
     @Override
     protected void onItemClick(int position) {
         super.onItemClick(position);
-        pushFragment(MessagesFragment.class, MessagesFragment.createArgs(mAdapter.get(position).getUserId()));
+        pushFragment(MessagesFragment.class, MessagesFragment.createArgs(
+				mAdapter.get(position).getUserId(),
+				mAdapter.get(position).getFullName())
+		);
     }
 
+
+	@Override
+	public int getTitleResourceId() {
+		return R.string.friends;
+	}
+
+	@Override
+	public boolean isHomeButtonVisible() {
+		return false;
+	}
 }
