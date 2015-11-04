@@ -10,11 +10,13 @@ import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 import ru.touchin.vkchat.BuildConfig;
 import ru.touchin.vkchat.Settings;
 import ru.touchin.vkchat.VKChatApp;
-import ru.touchin.vkchat.VKHelper;
+import ru.touchin.vkchat.activities.MainActivity;
 import ru.touchin.vkchat.fragments.base.AbstractWebViewFragment;
 
 public class VKAuthFragment extends AbstractWebViewFragment {
-
+	public static final String SCOPES = "friends,messages";
+	public static final String REDIRECT_URL = "https://oauth.vk.com/blank.html";
+	public static final String API_VERSION = "5.37";
 
     @Override
     protected boolean isActionBarVisible() {
@@ -25,17 +27,17 @@ public class VKAuthFragment extends AbstractWebViewFragment {
     protected void loadFragmentDataInner(RequestAndTaskExecutor executor, AggregationTaskStageState currentTaskStageState) {
         String urlToLoad = "https://oauth.vk.com/authorize?" +
                 "client_id=" + BuildConfig.VK_APP_ID +
-                "&scope=" + VKHelper.SCOPES +
+                "&scope=" + SCOPES +
                 "&display=mobile" +
-                "&redirect_uri=" + VKHelper.REDIRECT_URL +
-                "&v=" + VKHelper.API_VERSION +
+                "&redirect_uri=" + REDIRECT_URL +
+                "&v=" + API_VERSION +
                 "&response_type=token";
         loadUrl(executor, currentTaskStageState, urlToLoad, null);
     }
 
     @Override
     protected boolean processUrl(String url) {
-        if (url.startsWith(VKHelper.REDIRECT_URL)) {
+        if (url.startsWith(REDIRECT_URL)) {
             Uri uri = Uri.parse(url.replaceFirst("#", "?"));
             boolean isAnyFieldWrong = false;
             String accessToken = uri.getQueryParameter("access_token");
@@ -54,12 +56,6 @@ public class VKAuthFragment extends AbstractWebViewFragment {
                 isAnyFieldWrong = true;
             }
 
-//            if (StringUtils.isNotBlank(expiresIn)) {
-//                Settings.VK_ACCESS_TOKEN.set(getActivity(), expiresIn);
-//            } else {
-//                isAnyFieldWrong = true;
-//            }
-
             if (isAnyFieldWrong) {
                 String errorDescription = uri.getQueryParameter("error_description");
                 if (StringUtils.isNotBlank(errorDescription)) {
@@ -67,7 +63,7 @@ public class VKAuthFragment extends AbstractWebViewFragment {
                 }
             }
 
-            popBackStack();
+            pushFragment(FriendsListFragment.class);
             return true;
         }
         return false;

@@ -1,26 +1,14 @@
 package ru.touchin.vkchat.providers;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
-import ru.touchin.vkchat.AbstractRequestSuccessListener;
-import ru.touchin.vkchat.models.Friend;
-import ru.touchin.vkchat.models.Friends;
+import ru.touchin.vkchat.requests.AbstractRequestSuccessListener;
 import ru.touchin.vkchat.models.Message;
-import ru.touchin.vkchat.models.Messages;
-import ru.touchin.vkchat.models.MessagesObject;
 import ru.touchin.vkchat.models.MessagesResponse;
-import ru.touchin.vkchat.providers.RequestFailListener;
 import ru.touchin.vkchat.providers.base.RemoteAggregationPagingTask;
-import ru.touchin.vkchat.requests.FriendsRequest;
 import ru.touchin.vkchat.requests.MessagesRequest;
 
 public class MessagesTask extends RemoteAggregationPagingTask {

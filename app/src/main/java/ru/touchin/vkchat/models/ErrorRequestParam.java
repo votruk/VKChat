@@ -4,7 +4,7 @@ import com.google.api.client.util.Key;
 
 import org.zuzuk.utils.serialization.json.ObjectFromJson;
 
-public class RequestParam extends ObjectFromJson {
+public class ErrorRequestParam extends ObjectFromJson {
 
     @Key("key")
     private String mKey;

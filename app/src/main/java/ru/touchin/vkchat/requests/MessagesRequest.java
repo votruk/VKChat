@@ -2,11 +2,6 @@ package ru.touchin.vkchat.requests;
 
 import com.google.api.client.http.GenericUrl;
 
-import ru.touchin.vkchat.Settings;
-import ru.touchin.vkchat.VKChatApp;
-import ru.touchin.vkchat.models.Friends;
-import ru.touchin.vkchat.models.Messages;
-import ru.touchin.vkchat.models.MessagesObject;
 import ru.touchin.vkchat.models.MessagesResponse;
 
 

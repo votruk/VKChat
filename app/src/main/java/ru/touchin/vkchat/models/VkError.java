@@ -15,7 +15,7 @@ public class VkError extends ObjectFromJson {
     private String mErrorMessage;
 
     @Key("request_params")
-    private List<RequestParam> mRequestParamList;
+    private List<ErrorRequestParam> mErrorRequestParamList;
 
     public Integer getErrorCode() {
         return mErrorCode;
@@ -25,7 +25,7 @@ public class VkError extends ObjectFromJson {
         return mErrorMessage;
     }
 
-    public List<RequestParam> getRequestParamList() {
-        return mRequestParamList;
+    public List<ErrorRequestParam> getErrorRequestParamList() {
+        return mErrorRequestParamList;
     }
 }

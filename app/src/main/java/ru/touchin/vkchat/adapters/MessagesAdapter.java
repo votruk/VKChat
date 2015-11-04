@@ -51,8 +51,8 @@ public class MessagesAdapter extends AbstractPagerAdapterWithProgressBar<Message
         Date date = new Date(message.getDate() * 1000);
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         String dateString = sdf.format(date);
-        TextView dateTV = (TextView) view.findViewById(R.id.message_date);
-        dateTV.setText(dateString);
+        TextView dateTextView = (TextView) view.findViewById(R.id.message_date);
+        dateTextView.setText(dateString);
 
         body.setText(Html.fromHtml(message.getBody()));
         if (message.getIsMessageMine() == 1) {
@@ -61,14 +61,14 @@ public class MessagesAdapter extends AbstractPagerAdapterWithProgressBar<Message
             body.setBackgroundResource(R.drawable.my_message2);
             layout.setPadding((int) (bigPadding * screenDencity), (int) (smallPadding * screenDencity),
                     (int) (smallPadding * screenDencity), (int) (smallPadding * screenDencity));
-            dateTV.setGravity(Gravity.LEFT);
+            dateTextView.setGravity(Gravity.LEFT);
 
             body.setTextColor(Color.WHITE);
         } else {
             body.setBackgroundResource(R.drawable.not_my);
             layout.setPadding((int) (smallPadding * screenDencity), (int) (smallPadding * screenDencity),
                     (int) (bigPadding * screenDencity), (int) (smallPadding * screenDencity));
-            dateTV.setGravity(Gravity.RIGHT);
+            dateTextView.setGravity(Gravity.RIGHT);
             body.setTextColor(Color.BLACK);
         }
 

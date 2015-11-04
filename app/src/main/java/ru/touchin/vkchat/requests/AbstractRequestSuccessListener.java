@@ -1,4 +1,4 @@
-package ru.touchin.vkchat;
+package ru.touchin.vkchat.requests;
 
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;

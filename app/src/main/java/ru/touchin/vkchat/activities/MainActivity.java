@@ -10,16 +10,21 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.zuzuk.ui.UiUtils;
+import org.zuzuk.ui.activities.AbstractExecutorActivity;
 import org.zuzuk.utils.log.Lc;
+import org.zuzuk.utils.serialization.json.ObjectFromJson;
 
 import java.util.List;
 
 import ru.touchin.vkchat.R;
+import ru.touchin.vkchat.Settings;
+import ru.touchin.vkchat.VKChatApp;
 import ru.touchin.vkchat.fragments.FriendsListFragment;
+import ru.touchin.vkchat.fragments.VKAuthFragment;
 import ru.touchin.vkchat.fragments.base.AbstractLocalLoadedFragment;
+import ru.touchin.vkchat.providers.RequestFailListener;
 
-//@BroadcastEvents({@EventAnnotation(value = Settings.RESPONDENT_PROFILE_NAME)})
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AbstractExecutorActivity implements RequestFailListener {
 
 
 	private AbstractLocalLoadedFragment currentFragment;
@@ -102,10 +107,10 @@ public class MainActivity extends BaseActivity {
 	}
 
 	public void setFirstFragment() {
-//        setFirstFragment(ObjectFromJson.isNull(Settings.VK_ACCESS_TOKEN.get(VKChatApp.getInstance())) ?
-//                VKAuthFragment.class : FriendsListFragment.class);
+        setFirstFragment(ObjectFromJson.isNull(Settings.VK_ACCESS_TOKEN.get(VKChatApp.getInstance())) ?
+				VKAuthFragment.class : FriendsListFragment.class);
 //        setFirstFragment(VKAuthFragment.class);
-		setFirstFragment(FriendsListFragment.class);
+//		setFirstFragment(FriendsListFragment.class);
 	}
 
 
@@ -130,5 +135,6 @@ public class MainActivity extends BaseActivity {
 
 		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
 	}
+
 
 }

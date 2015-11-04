@@ -2,16 +2,13 @@ package ru.touchin.vkchat.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 
@@ -24,7 +21,6 @@ import org.zuzuk.tasks.realloading.ChainedRequestListener;
 
 import java.util.Random;
 
-import ru.touchin.vkchat.AbstractRequestSuccessListener;
 import ru.touchin.vkchat.R;
 import ru.touchin.vkchat.adapters.MessagesAdapter;
 import ru.touchin.vkchat.fragments.base.AbstractInverseFragment;
@@ -40,6 +36,7 @@ public class MessagesFragment extends AbstractInverseFragment {
 	private long userId;
 	private String userName;
 	private EditText messageText;
+	private ListView listView;
 
 	private InverseRequestPagingProvider<Message> messagesListProvider;
 	private MessagesAdapter mAdapter;
@@ -56,12 +53,15 @@ public class MessagesFragment extends AbstractInverseFragment {
 		super.onCreateRenewable();
 		userId = (long) getArguments().get(USER_ID);
 		userName = (String) getArguments().get(USER_NAME);
-		messagesListProvider = getMessageInverseRequestPagingProvider();
+		messagesListProvider = new InverseRequestPagingProvider<>(this, new MessagesTaskCreator(this, userId));
 	}
 
-	@NonNull
-	private InverseRequestPagingProvider<Message> getMessageInverseRequestPagingProvider() {
-		return new InverseRequestPagingProvider<>(this, new MessagesTaskCreator(this, userId));
+
+	private void reloadAndShowNewMessage() {
+		reload();
+		messageText.setText("");
+		listView.smoothScrollToPosition(mAdapter.getCount());
+
 	}
 
 	@Override
@@ -87,7 +87,8 @@ public class MessagesFragment extends AbstractInverseFragment {
 
 		mAdapter = new MessagesAdapter(width, dp);
 		mAdapter.setProvider(messagesListProvider);
-		((ListView) findViewById(R.id.messages_list)).setAdapter(mAdapter);
+		listView = findViewById(R.id.messages_list);
+		listView.setAdapter(mAdapter);
 
 		messageText = findViewById(R.id.new_message_text);
 
@@ -96,13 +97,11 @@ public class MessagesFragment extends AbstractInverseFragment {
 					@Override
 					public void onClick(View v) {
 						sendMessage();
+
 					}
 				}
 		);
 
-//        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_chevron_left_white_24dp);
-//        ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(R.drawable.ic_chevron_left_white_24dp);
 	}
 
 	@Override
@@ -135,12 +134,8 @@ public class MessagesFragment extends AbstractInverseFragment {
 					new ChainedRequestListener<Integer>() {
 						@Override
 						public void onRequestSuccess(Integer integer, RequestAndTaskExecutor executor) {
-//							messagesListProvider.
 							if (integer != 0) {
-								System.out.println("asd");
-								setNeedInvalidating();
-//								messagesListProvider= getMessageInverseRequestPagingProvider();
-//								mAdapter
+								reloadAndShowNewMessage();
 							}
 						}
 
@@ -153,4 +148,7 @@ public class MessagesFragment extends AbstractInverseFragment {
 		}
 	}
 
+	public ListView getListView() {
+		return listView;
+	}
 }

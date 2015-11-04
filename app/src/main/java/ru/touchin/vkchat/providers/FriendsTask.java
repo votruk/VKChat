@@ -1,17 +1,13 @@
 package ru.touchin.vkchat.providers;
 
-import android.content.Context;
-
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
 import java.util.ArrayList;
 
-import ru.touchin.vkchat.AbstractRequestSuccessListener;
+import ru.touchin.vkchat.requests.AbstractRequestSuccessListener;
 import ru.touchin.vkchat.models.Friend;
-import ru.touchin.vkchat.models.Friends;
 import ru.touchin.vkchat.models.FriendsResponse;
-import ru.touchin.vkchat.providers.RequestFailListener;
 import ru.touchin.vkchat.providers.base.RemoteAggregationPagingTask;
 import ru.touchin.vkchat.requests.FriendsRequest;
 
