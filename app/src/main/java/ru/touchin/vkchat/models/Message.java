@@ -14,7 +14,7 @@ public class Message extends ObjectFromJson{
     private Long mDate;
 
     @Key("out")
-    private Integer isMessageMine;
+    private Integer out;
 
     @Key("user_id")
     private Long mUserId;
@@ -40,8 +40,12 @@ public class Message extends ObjectFromJson{
         return mDate;
     }
 
-    public Integer getIsMessageMine() {
-        return isMessageMine;
+    public Integer getOut() {
+        return out;
+    }
+
+    public boolean isMessageMine() {
+        return out == 1;
     }
 
     public Long getUserId() {

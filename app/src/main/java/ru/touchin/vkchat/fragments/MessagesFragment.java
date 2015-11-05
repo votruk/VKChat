@@ -28,6 +28,7 @@ import ru.touchin.vkchat.models.Message;
 import ru.touchin.vkchat.providers.InverseRequestPagingProvider;
 import ru.touchin.vkchat.providers.MessagesTaskCreator;
 import ru.touchin.vkchat.requests.SendMessageRequest;
+import ru.touchin.vkchat.views.MessageItem;
 import ru.touchin.vkchat.wrappers.ApiRequestWrapper;
 
 public class MessagesFragment extends AbstractInverseFragment {
@@ -38,7 +39,7 @@ public class MessagesFragment extends AbstractInverseFragment {
 	private EditText messageText;
 	private ListView listView;
 
-	private InverseRequestPagingProvider<Message> messagesListProvider;
+	private InverseRequestPagingProvider<MessageItem> messagesListProvider;
 	private MessagesAdapter mAdapter;
 
 	public static Bundle createArgs(Long userId, String userName) {
@@ -79,13 +80,7 @@ public class MessagesFragment extends AbstractInverseFragment {
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
-		WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		wm.getDefaultDisplay().getMetrics(displayMetrics);
-		int width = displayMetrics.widthPixels;
-		float dp = displayMetrics.density;
-
-		mAdapter = new MessagesAdapter(width, dp);
+		mAdapter = new MessagesAdapter();
 		mAdapter.setProvider(messagesListProvider);
 		listView = findViewById(R.id.messages_list);
 		listView.setAdapter(mAdapter);

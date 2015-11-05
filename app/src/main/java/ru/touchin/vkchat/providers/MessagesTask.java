@@ -10,6 +10,9 @@ import ru.touchin.vkchat.models.Message;
 import ru.touchin.vkchat.models.MessagesResponse;
 import ru.touchin.vkchat.providers.base.RemoteAggregationPagingTask;
 import ru.touchin.vkchat.requests.MessagesRequest;
+import ru.touchin.vkchat.views.MessageItem;
+import ru.touchin.vkchat.views.MessageLeft;
+import ru.touchin.vkchat.views.MessageRight;
 
 public class MessagesTask extends RemoteAggregationPagingTask {
     private long userId;
@@ -26,7 +29,15 @@ public class MessagesTask extends RemoteAggregationPagingTask {
             @Override
             public void onRequestSuccess(MessagesResponse response) {
 
-                ArrayList<Message> messages = response.getResponse().getMessages();
+                ArrayList<MessageItem> messages = new ArrayList<>();
+                for (Message m : response.getResponse().getMessages()) {
+                    if (m.isMessageMine()) {
+                        messages.add(new MessageRight(m));
+                    } else {
+                        messages.add(new MessageLeft(m));
+                    }
+                }
+
                 setPageItems(messages);
             }
 
