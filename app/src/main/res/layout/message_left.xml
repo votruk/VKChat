@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.percent.PercentRelativeLayout
     android:id="@+id/message_layout_left"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minWidth="@dimen/message_minimum"
-    android:orientation="vertical"
     android:padding="@dimen/small_padding"
     android:visibility="gone">
 
@@ -21,10 +20,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/big_padding"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/message_date_left"
         android:background="@drawable/not_my"
         android:gravity="left"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_marginRightPercent="20%">
 
         <TextView
             android:id="@+id/message_body_left"
@@ -42,4 +43,4 @@
     </LinearLayout>
 
 
-</LinearLayout>
+</android.support.percent.PercentRelativeLayout>

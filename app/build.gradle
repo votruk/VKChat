@@ -56,4 +56,5 @@ dependencies {
 
     compile 'org.apache.commons:commons-lang3:3.3.2'
     compile 'commons-io:commons-io:2.4'
+    compile 'com.android.support:percent:23.1.0'
 }
