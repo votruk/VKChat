@@ -63,7 +63,7 @@ public class VKAuthFragment extends AbstractWebViewFragment {
                 }
             }
 
-            pushFragment(FriendsListFragment.class);
+            setFirstFragment(FriendsListFragment.class);
             return true;
         }
         return false;
