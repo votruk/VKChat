@@ -3,6 +3,7 @@ package ru.touchin.vkchat.models.attachments;
 
 import com.google.api.client.util.Key;
 
+import org.apache.commons.lang3.StringUtils;
 import org.zuzuk.utils.serialization.json.ObjectFromJson;
 
 public class PhotoAttachment extends ObjectFromJson {
@@ -102,5 +103,17 @@ public class PhotoAttachment extends ObjectFromJson {
 
 	public String getPhoto2560() {
 		return photo2560;
+	}
+
+	public String getPhotoUrl() {
+		if (StringUtils.isNotBlank(photo807)) {
+			return photo807;
+		} else if (StringUtils.isNotBlank(photo604)) {
+			return photo604;
+		}else if (StringUtils.isNotBlank(photo130)) {
+			return photo130;
+		} else {
+			return photo75;
+		}
 	}
 }

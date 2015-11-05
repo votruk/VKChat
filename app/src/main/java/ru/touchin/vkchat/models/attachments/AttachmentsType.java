@@ -3,8 +3,6 @@ package ru.touchin.vkchat.models.attachments;
 
 import com.google.api.client.util.Value;
 
-import org.apache.commons.lang3.StringUtils;
-
 public enum AttachmentsType {
     @Value("photo")
     PHOTO,

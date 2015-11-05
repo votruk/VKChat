@@ -7,11 +7,12 @@
 
         <org.zuzuk.ui.views.hacked.CustomListView
             android:id="@+id/fragmentList"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:divider="@color/grey_divider"
-            android:dividerHeight="1dp" />
+            android:dividerHeight="1dp"
+            android:clickable="false"/>
 
 
 </LinearLayout>

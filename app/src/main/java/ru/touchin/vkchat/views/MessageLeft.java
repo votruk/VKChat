@@ -2,6 +2,7 @@ package ru.touchin.vkchat.views;
 
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -55,12 +56,9 @@ public class MessageLeft implements MessageItem {
 				if (leftLayout.getChildCount() != photoAttachments.size()) {
 					for (PhotoAttachment photoAttachment : photoAttachments) {
 						ReenterableSimpleDraweeView draweeView = new ReenterableSimpleDraweeView(VKChatApp.getInstance());
-						draweeView.setUrl(photoAttachment.getPhoto604());
-						draweeView.setMinimumHeight(240);
-						draweeView.setMaxHeight(240);
-						draweeView.setMinimumWidth(240);
-						draweeView.setMaxWidth(240);
-
+						draweeView.setUrl(photoAttachment.getPhotoUrl());
+						LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(480, 480);
+						draweeView.setLayoutParams(params);
 						leftLayout.addView(draweeView);
 					}
 				}

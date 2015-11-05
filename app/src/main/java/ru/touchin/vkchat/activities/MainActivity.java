@@ -110,7 +110,7 @@ public class MainActivity extends AbstractExecutorActivity implements RequestFai
 	}
 
 	public void setFirstFragment() {
-		if (StringUtils.isNotEmpty(Settings.VK_ACCESS_TOKEN.get(VKChatApp.getInstance()))) {
+		if (StringUtils.isNotBlank(Settings.VK_ACCESS_TOKEN.get(VKChatApp.getInstance()))) {
 			long now = new Date().getTime();
 			if (now > Settings.VK_TOKEN_EXPIRES_IN.get(VKChatApp.getInstance())) {
 				setFirstFragment(VKAuthFragment.class);
@@ -120,7 +120,6 @@ public class MainActivity extends AbstractExecutorActivity implements RequestFai
 		} else {
 			setFirstFragment(VKAuthFragment.class);
 		}
-
 	}
 
 
