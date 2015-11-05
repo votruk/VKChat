@@ -8,25 +8,25 @@ import org.zuzuk.utils.serialization.json.ObjectFromJson;
 
 public class PhotoAttachment extends ObjectFromJson {
 	@Key("id")
-	private int photoId;
+	private Integer photoId;
 
 	@Key("album_id")
-	private int albumId;
+	private Integer albumId;
 
 	@Key("owner_id")
-	private long ownerId;
+	private Long ownerId;
 
 	@Key("text")
 	private String text;
 
 	@Key("width")
-	private int width;
+	private Integer width;
 
 	@Key("height")
-	private int height;
+	private Integer height;
 
 	@Key("date")
-	private long date;
+	private Long date;
 
 	@Key("access_key")
 	private String accessKey;
@@ -49,15 +49,15 @@ public class PhotoAttachment extends ObjectFromJson {
 	@Key("photo_2560")
 	private String photo2560;
 
-	public int getPhotoId() {
+	public Integer getPhotoId() {
 		return photoId;
 	}
 
-	public int getAlbumId() {
+	public Integer getAlbumId() {
 		return albumId;
 	}
 
-	public long getOwnerId() {
+	public Long getOwnerId() {
 		return ownerId;
 	}
 
@@ -65,15 +65,15 @@ public class PhotoAttachment extends ObjectFromJson {
 		return text;
 	}
 
-	public int getWidth() {
+	public Integer getWidth() {
 		return width;
 	}
 
-	public int getHeight() {
+	public Integer getHeight() {
 		return height;
 	}
 
-	public long getDate() {
+	public Long getDate() {
 		return date;
 	}
 

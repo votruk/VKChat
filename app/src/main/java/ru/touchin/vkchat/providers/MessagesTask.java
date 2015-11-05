@@ -11,8 +11,8 @@ import ru.touchin.vkchat.models.MessagesResponse;
 import ru.touchin.vkchat.providers.base.RemoteAggregationPagingTask;
 import ru.touchin.vkchat.requests.MessagesRequest;
 import ru.touchin.vkchat.views.MessageItem;
-import ru.touchin.vkchat.views.MessageLeft;
-import ru.touchin.vkchat.views.MessageRight;
+import ru.touchin.vkchat.views.IncomeMessage;
+import ru.touchin.vkchat.views.OutcomeMessage;
 
 public class MessagesTask extends RemoteAggregationPagingTask {
     private long userId;
@@ -32,9 +32,9 @@ public class MessagesTask extends RemoteAggregationPagingTask {
                 ArrayList<MessageItem> messages = new ArrayList<>();
                 for (Message m : response.getResponse().getMessages()) {
                     if (m.isMessageMine()) {
-                        messages.add(new MessageRight(m));
+                        messages.add(new OutcomeMessage(m));
                     } else {
-                        messages.add(new MessageLeft(m));
+                        messages.add(new IncomeMessage(m));
                     }
                 }
 

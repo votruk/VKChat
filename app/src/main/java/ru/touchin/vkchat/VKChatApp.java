@@ -1,6 +1,7 @@
 package ru.touchin.vkchat;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.StrictMode;
 import android.util.DisplayMetrics;
@@ -38,11 +39,18 @@ public class VKChatApp extends Application implements TaskExecutorHelperCreator 
         final ImagePipelineConfig config = OkHttpImagePipelineConfigFactory.newBuilder(getApplicationContext(), httpClient).build();
         Fresco.initialize(getApplicationContext(), config);
 
+//        if (Settings.PHOTO_WIDTH.get(this) == null || Settings.PHOTO_WIDTH.get(this) == 0) {
+            WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            wm.getDefaultDisplay().getMetrics(displayMetrics);
+            int width = displayMetrics.widthPixels/3;
+            Settings.PHOTO_WIDTH.set(this, width);
+//        }
     }
 
     @Override
     public TaskExecutorHelper createTaskExecutorHelper() {
-        return new TaskExecutorHelper(){
+        return new TaskExecutorHelper() {
             @Override
             protected RequestAndTaskExecutor createRequestAndTaskExecutor() {
                 return new RequestAndTaskExecutor();
