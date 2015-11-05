@@ -14,5 +14,11 @@ public class Attachment extends ObjectFromJson {
 	@Key("photo")
 	private PhotoAttachment photo;
 
+	public String getType() {
+		return type;
+	}
 
+	public PhotoAttachment getPhoto() {
+		return photo;
+	}
 }

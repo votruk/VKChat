@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+	android:id="@+id/message_layout_left"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-android:id="@+id/message_layout_left"
-	android:visibility="gone"
-	android:padding="@dimen/small_padding">
+	android:padding="@dimen/small_padding"
+	android:visibility="gone">
 
 	<TextView
 		android:id="@+id/message_date_left"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:gravity="center"
 		android:textColor="@color/black"
 		android:textSize="16sp"
-		android:textStyle="bold"
-		android:gravity="center"/>
+		android:textStyle="bold"/>
 
 	<LinearLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:background="@drawable/not_my"
-		android:layout_marginRight="@dimen/big_padding">
+		android:layout_marginRight="@dimen/big_padding"
+		android:background="@drawable/not_my">
 		<TextView
 			android:id="@+id/message_body_left"
 			android:layout_width="match_parent"
@@ -30,6 +30,11 @@ android:id="@+id/message_layout_left"
 
 			android:textColor="@color/black"
 			android:textSize="18sp"/>
+		<include
+			android:id="@+id/message_layout_photos_left"
+			layout="@layout/message_photos"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
 	</LinearLayout>
 
 
