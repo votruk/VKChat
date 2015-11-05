@@ -44,8 +44,6 @@ public class FriendsListFragment extends AbstractListViewFragment {
         mAdapter = new FriendsAdapter();
         mAdapter.setProvider(friendsListProvider);
         ((ListView) findViewById(R.id.fragmentList)).setAdapter(mAdapter);
-
-//        ((AppCompatActivity) getActivity()).getSupportActionBar().set
     }
 
 
