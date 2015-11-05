@@ -5,15 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import org.apache.commons.lang3.StringUtils;
 import org.zuzuk.ui.UiUtils;
 import org.zuzuk.ui.activities.AbstractExecutorActivity;
 import org.zuzuk.utils.log.Lc;
 import org.zuzuk.utils.serialization.json.ObjectFromJson;
 
+import java.util.Date;
 import java.util.List;
 
 import ru.touchin.vkchat.R;
@@ -107,19 +110,28 @@ public class MainActivity extends AbstractExecutorActivity implements RequestFai
 	}
 
 	public void setFirstFragment() {
-//        setFirstFragment(ObjectFromJson.isNull(Settings.VK_ACCESS_TOKEN.get(VKChatApp.getInstance())) ?
-//				VKAuthFragment.class : FriendsListFragment.class);
-//        setFirstFragment(VKAuthFragment.class);
-		setFirstFragment(FriendsListFragment.class);
+		if (StringUtils.isNotEmpty(Settings.VK_ACCESS_TOKEN.get(VKChatApp.getInstance()))) {
+			long now = new Date().getTime();
+			if (now > Settings.VK_TOKEN_EXPIRES_IN.get(VKChatApp.getInstance())) {
+				setFirstFragment(VKAuthFragment.class);
+			} else {
+				setFirstFragment(FriendsListFragment.class);
+			}
+		} else {
+			setFirstFragment(VKAuthFragment.class);
+		}
+
 	}
 
 
 	protected void setupActionBar() {
 		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
-		getSupportActionBar().setDisplayShowHomeEnabled(true);
-		getSupportActionBar().setHomeButtonEnabled(true);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		ActionBar actionBar = getSupportActionBar();
+		if (actionBar != null) {
+			getSupportActionBar().setDisplayShowHomeEnabled(true);
+			getSupportActionBar().setHomeButtonEnabled(true);
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		}
 	}
 
 	@Override

@@ -7,6 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.zuzuk.tasks.aggregationtask.AggregationTaskStageState;
 import org.zuzuk.tasks.aggregationtask.RequestAndTaskExecutor;
 
+import java.util.Date;
+
 import ru.touchin.vkchat.BuildConfig;
 import ru.touchin.vkchat.Settings;
 import ru.touchin.vkchat.VKChatApp;
@@ -17,6 +19,7 @@ public class VKAuthFragment extends AbstractWebViewFragment {
 	public static final String SCOPES = "friends,messages";
 	public static final String REDIRECT_URL = "https://oauth.vk.com/blank.html";
 	public static final String API_VERSION = "5.37";
+    public static final int FIVE_MINUTES = 5 * 60 * 1000;
 
     @Override
     protected boolean isActionBarVisible() {
@@ -52,6 +55,14 @@ public class VKAuthFragment extends AbstractWebViewFragment {
 
             if (StringUtils.isNotBlank(userId)) {
                 Settings.VK_USER_ID.set(VKChatApp.getInstance(), userId);
+            } else {
+                isAnyFieldWrong = true;
+            }
+
+            long expiresInMilliseconds = Long.parseLong(expiresIn) * 1000;
+            long expirationDate = (new Date().getTime() + expiresInMilliseconds - FIVE_MINUTES);
+            if (StringUtils.isNotBlank(userId)) {
+                Settings.VK_TOKEN_EXPIRES_IN.set(VKChatApp.getInstance(), expirationDate);
             } else {
                 isAnyFieldWrong = true;
             }
