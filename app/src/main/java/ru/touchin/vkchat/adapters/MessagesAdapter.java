@@ -20,7 +20,7 @@ import ru.touchin.vkchat.models.Message;
 import ru.touchin.vkchat.providers.InverseRequestPagingProvider;
 import ru.touchin.vkchat.views.MessageItem;
 
-public class MessagesAdapter extends AbstractPagerAdapterWithProgressBar<MessageItem, RequestPagingProvider<MessageItem>> {
+public class MessagesAdapter extends AbstractPagerAdapterWithProgressBar<MessageItem, InverseRequestPagingProvider<MessageItem>> {
 
     @Override
     public View newRealView(int position, LayoutInflater inflater, ViewGroup container) {
