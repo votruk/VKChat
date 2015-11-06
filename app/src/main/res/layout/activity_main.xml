@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,151 +11,14 @@
         style="@style/ToolbarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:theme="@style/ToolbarOverlayStyle" />
-
-    <!--<android.support.v4.widget.DrawerLayout-->
-        <!--android:id="@+id/drawer"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:clickable="true">-->
-
-        <FrameLayout
-            android:id="@+id/mainFragmentContainer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <!--<LinearLayout-->
-            <!--android:id="@+id/menu"-->
-            <!--android:layout_width="304dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_gravity="start"-->
-            <!--android:background="@color/blue"-->
-            <!--android:clickable="true"-->
-            <!--android:orientation="vertical">-->
-
-            <!--<LinearLayout-->
-                <!--android:id="@+id/profile_item"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="14dp"-->
-                <!--android:background="?android:attr/selectableItemBackground"-->
-                <!--android:clickable="true"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:paddingBottom="17dp"-->
-                <!--android:paddingTop="17dp">-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<org.zuzuk.ui.views.typefaces.TypefacedTextView-->
-                        <!--android:id="@+id/respondent_name"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginTop="5dp"-->
-                        <!--android:textColor="@color/white"-->
-                        <!--android:textSize="@dimen/font_size_51"-->
-                        <!--app:customTypeface="FiraSans-Regular" />-->
-
-                    <!--<org.zuzuk.ui.views.typefaces.TypefacedTextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="@string/profile_settings"-->
-                        <!--android:textColor="@color/profile_grey_text"-->
-                        <!--android:textSize="@dimen/font_size_39"-->
-                        <!--app:customTypeface="FiraSans-Regular" />-->
-                <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
-
-            <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:background="@color/blue_divider" />-->
+        app:theme="@style/ToolbarOverlayStyle"
+        app:elevation="4dp"/>
 
 
-            <!--<LinearLayout-->
-                <!--android:id="@+id/my_tasks_item"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="?android:attr/selectableItemBackground"-->
-                <!--android:clickable="true"-->
-                <!--android:paddingBottom="20dp"-->
-                <!--android:paddingTop="20dp">-->
-
-                <!--<org.zuzuk.ui.views.typefaces.TypefacedTextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginLeft="14dp"-->
-                    <!--android:text="@string/my_tasks"-->
-                    <!--android:textColor="@color/white"-->
-                    <!--android:textSize="@dimen/font_size_51"-->
-                    <!--app:customTypeface="FiraSans-Regular" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:background="@color/blue_divider" />-->
-
-            <!--<LinearLayout-->
-                <!--android:id="@+id/about_item"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="?android:attr/selectableItemBackground"-->
-                <!--android:clickable="true"-->
-                <!--android:paddingBottom="20dp"-->
-                <!--android:paddingTop="20dp">-->
-
-                <!--<org.zuzuk.ui.views.typefaces.TypefacedTextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginLeft="14dp"-->
-                    <!--android:text="@string/about"-->
-                    <!--android:textColor="@color/white"-->
-                    <!--android:textSize="@dimen/font_size_51"-->
-                    <!--app:customTypeface="FiraSans-Regular" />-->
-            <!--</LinearLayout>-->
-
-            <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:background="@color/blue_divider" />-->
-
-            <!--<Space-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0dp"-->
-                <!--android:layout_weight="1" />-->
-
-            <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:background="@color/blue_divider" />-->
-
-            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
-                <!--&lt;!&ndash;android:id="@+id/logout_item"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:background="?android:attr/selectableItemBackground"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:clickable="true"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:paddingBottom="20dp"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:paddingTop="20dp">&ndash;&gt;-->
-
-                <!--&lt;!&ndash;<org.zuzuk.ui.views.typefaces.TypefacedTextView&ndash;&gt;-->
-                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-                    <!--&lt;!&ndash;android:layout_marginLeft="14dp"&ndash;&gt;-->
-                    <!--&lt;!&ndash;android:text="@string/gout"&ndash;&gt;-->
-                    <!--&lt;!&ndash;android:textColor="@color/profile_grey_text"&ndash;&gt;-->
-                    <!--&lt;!&ndash;android:textSize="@dimen/font_size_51"&ndash;&gt;-->
-                    <!--&lt;!&ndash;app:customTypeface="FiraSans-Regular" />&ndash;&gt;-->
-            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
-
-        <!--</LinearLayout>-->
-
-    <!--</android.support.v4.widget.DrawerLayout>-->
+    <FrameLayout
+        android:id="@+id/mainFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

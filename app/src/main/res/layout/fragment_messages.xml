@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <org.zuzuk.ui.views.hacked.CustomListView
@@ -14,23 +15,23 @@
         android:layout_weight="1"
         android:background="@color/white"
         android:clickable="false"
-        android:stackFromBottom="true"
-        android:transcriptMode="normal"/>
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:background="@color/light_grey">
+        android:background="@color/light_grey"
+        android:minHeight="@dimen/send_message_min_height">
 
         <EditText
             android:id="@+id/new_message_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="@dimen/small_margin"
             android:layout_weight="1"
             android:hint="Текст сообщения"
-            android:maxHeight="116dp"
+            android:maxHeight="@dimen/max_message_height"
             android:textColor="@color/black"
             android:textColorHint="@color/black"/>
 
@@ -40,8 +41,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginLeft="16dp"
+            android:layout_marginRight="@dimen/margin_send"
             android:layout_weight="0"
-            android:padding="8dp"
+            android:padding="@dimen/small_padding"
             android:src="@drawable/ic_send_grey_24dp"/>
     </LinearLayout>
 

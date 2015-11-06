@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.zuzuk.providers.RequestPagingProvider;
@@ -20,7 +21,7 @@ import ru.touchin.vkchat.models.Message;
 import ru.touchin.vkchat.providers.InverseRequestPagingProvider;
 import ru.touchin.vkchat.views.MessageItem;
 
-public class MessagesAdapter extends AbstractPagerAdapterWithProgressBar<MessageItem, InverseRequestPagingProvider<MessageItem>> {
+public class MessagesAdapter extends AbstractAdapterWithDetection<MessageItem, RequestPagingProvider<MessageItem>> {
 
     @Override
     public View newRealView(int position, LayoutInflater inflater, ViewGroup container) {
@@ -31,5 +32,4 @@ public class MessagesAdapter extends AbstractPagerAdapterWithProgressBar<Message
     public void bindRealView(View view, MessageItem messageItem, int position) {
         messageItem.drawItem(view);
     }
-
 }

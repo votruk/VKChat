@@ -131,6 +131,7 @@ public class MainActivity extends AbstractExecutorActivity implements RequestFai
 			getSupportActionBar().setHomeButtonEnabled(true);
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		}
+		actionBar.setElevation(4.0f);
 	}
 
 	@Override

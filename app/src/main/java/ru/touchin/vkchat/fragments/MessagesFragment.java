@@ -33,7 +33,7 @@ import ru.touchin.vkchat.requests.SendMessageRequest;
 import ru.touchin.vkchat.views.MessageItem;
 import ru.touchin.vkchat.wrappers.ApiRequestWrapper;
 
-public class MessagesFragment extends AbstractInverseFragment {
+public class MessagesFragment extends AbstractListViewFragment {
 	public static final String USER_ID = "userId";
 	public static final String USER_NAME = "userName";
 	private long userId;
@@ -41,7 +41,7 @@ public class MessagesFragment extends AbstractInverseFragment {
 	private EditText messageText;
 	private ListView listView;
 
-	private InverseRequestPagingProvider<MessageItem> messagesListProvider;
+	private RequestPagingProvider<MessageItem> messagesListProvider;
 	private MessagesAdapter mAdapter;
 
 	public static Bundle createArgs(Long userId, String userName) {
@@ -56,14 +56,14 @@ public class MessagesFragment extends AbstractInverseFragment {
 		super.onCreateRenewable();
 		userId = (long) getArguments().get(USER_ID);
 		userName = (String) getArguments().get(USER_NAME);
-		messagesListProvider = new InverseRequestPagingProvider<>(this, new MessagesTaskCreator(this, userId));
+		messagesListProvider = new RequestPagingProvider<>(this, new MessagesTaskCreator(this, userId));
 	}
 
 
 	private void reloadAndShowNewMessage() {
 		reload();
 		messageText.setText("");
-		listView.smoothScrollToPosition(mAdapter.getCount());
+		listView.smoothScrollToPosition(0);
 
 	}
 
